@@ -1,0 +1,86 @@
+name: Collect Merge Queue Stats
+
+on:
+  schedule:
+    # Run every 30 minutes
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+    # Allow manual triggering
+
+jobs:
+  collect-stats:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Collect merge queue statistics
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p stats
+          TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+          OUTPUT_FILE="stats/merge_queue_${TIMESTAMP}.json"
+          echo "Collecting merge queue statistics at $(date)..."
+          python merge_queue_monitor.py -o "$OUTPUT_FILE"
+          echo "STATS_FILE=$OUTPUT_FILE" >> $GITHUB_ENV
+
+      - name: Checkout stats-data branch
+        run: |
+          # Fetch stats-data branch if it exists
+          git fetch origin stats-data:stats-data || echo "stats-data branch doesn't exist yet, will create it"
+
+          # Check if stats-data branch exists locally or remotely
+          if git show-ref --verify --quiet refs/heads/stats-data || git show-ref --verify --quiet refs/remotes/origin/stats-data; then
+            git checkout stats-data
+          else
+            # Create new orphan branch
+            git checkout --orphan stats-data
+            git rm -rf .
+            echo "# Merge Queue Statistics" > README.md
+            echo "This branch contains automated merge queue statistics collected every 30 minutes." >> README.md
+            echo "" >> README.md
+            echo "Files are stored in \`stats/merge_queue_YYYYMMDD_HHMMSS.json\` format." >> README.md
+            mkdir -p stats
+            git add README.md
+            git commit -m "Initialize stats-data branch"
+          fi
+
+      - name: Copy stats file to stats-data branch
+        run: |
+          # Checkout the stats file from main branch
+          git checkout main -- "${{ env.STATS_FILE }}"
+
+          # Add and commit the new stats file
+          git add "${{ env.STATS_FILE }}"
+          git commit -m "Add stats: $(basename ${{ env.STATS_FILE }})"
+
+      - name: Push stats to stats-data branch
+        run: |
+          git push origin stats-data
