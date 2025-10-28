@@ -115,7 +115,7 @@ class MergeQueueMonitor:
     def process_check_runs(self, head_commit: Dict) -> Dict:
         """Process check runs from the GraphQL response."""
         if not head_commit or not head_commit.get("statusCheckRollup"):
-            return {"total": 0, "in_progress": 0, "completed": 0, "queued": 0, "checks": []}
+            return {"total": 0, "in_progress": 0, "completed": 0, "queued": 0, "checks": [], "ci_started_at": None}
 
         overall_state = head_commit["statusCheckRollup"].get("state", "UNKNOWN")
         contexts = head_commit["statusCheckRollup"].get("contexts", {}).get("nodes", [])
@@ -123,6 +123,7 @@ class MergeQueueMonitor:
         in_progress = 0
         completed = 0
         queued = 0
+        earliest_start_time = None
 
         for context in contexts:
             status = context.get("status", "").upper()
@@ -133,12 +134,23 @@ class MergeQueueMonitor:
             elif status == "QUEUED":
                 queued += 1
 
+            # Track the earliest start time across all checks
+            started_at = context.get("startedAt")
+            if started_at:
+                if earliest_start_time is None:
+                    earliest_start_time = started_at
+                else:
+                    # Compare ISO timestamp strings
+                    if started_at < earliest_start_time:
+                        earliest_start_time = started_at
+
         return {
             "total": len(contexts),
             "in_progress": in_progress,
             "completed": completed,
             "queued": queued,
             "overall_state": overall_state,
+            "ci_started_at": earliest_start_time,
             "checks": contexts
         }
 
@@ -197,6 +209,12 @@ class MergeQueueMonitor:
                 print(f"    Commit: {head_commit.get('oid', 'N/A')[:7]}")
                 check_status = self.process_check_runs(head_commit)
                 print(f"    CI Status (Overall: {check_status.get('overall_state', 'UNKNOWN')}):")
+
+                # Show when CI started
+                ci_started_at = check_status.get('ci_started_at')
+                if ci_started_at:
+                    print(f"      - CI started at: {ci_started_at}")
+
                 print(f"      - Total checks: {check_status['total']}")
                 print(f"      - Running: {check_status['in_progress']}")
                 print(f"      - Completed: {check_status['completed']}")
@@ -208,14 +226,15 @@ class MergeQueueMonitor:
                     for check in check_status['checks'][:10]:  # Show first 10 checks
                         name = check.get('name') or check.get('context', 'Unknown')
                         status = check.get('status', check.get('state', 'UNKNOWN')).upper()
-                        conclusion = check.get('conclusion', '').upper()
+                        conclusion = check.get('conclusion')
+                        conclusion_upper = conclusion.upper() if conclusion else ''
 
                         if status == "COMPLETED":
-                            if conclusion == "SUCCESS":
+                            if conclusion_upper == "SUCCESS":
                                 status_emoji = "✓"
-                            elif conclusion == "FAILURE":
+                            elif conclusion_upper == "FAILURE":
                                 status_emoji = "✗"
-                            elif conclusion == "CANCELLED":
+                            elif conclusion_upper == "CANCELLED":
                                 status_emoji = "⊘"
                             else:
                                 status_emoji = "?"
@@ -226,7 +245,7 @@ class MergeQueueMonitor:
                         else:
                             status_emoji = "?"
 
-                        status_str = f"{conclusion}" if conclusion else status
+                        status_str = f"{conclusion_upper}" if conclusion_upper else status
                         print(f"        {status_emoji} {name}: {status_str}")
 
                     if len(check_status['checks']) > 10:
@@ -277,6 +296,7 @@ class MergeQueueMonitor:
                 }
                 entry_data["ci_status"] = {
                     "overall_state": check_status.get("overall_state"),
+                    "ci_started_at": check_status.get("ci_started_at"),
                     "total_checks": check_status["total"],
                     "running": check_status["in_progress"],
                     "completed": check_status["completed"],
