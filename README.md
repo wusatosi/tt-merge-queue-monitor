@@ -95,8 +95,46 @@ The JSON export includes:
 }
 ```
 
+## Automated Statistics Collection
+
+### One-time collection
+Run the collection script once to save current merge queue status:
+```bash
+./collect_stats.sh
+```
+
+This will create a timestamped JSON file in the `stats/` directory, e.g., `stats/merge_queue_20251028_133802.json`
+
+### Continuous monitoring
+Run the monitor loop to collect statistics every 30 minutes:
+```bash
+./monitor_loop.sh
+```
+
+This will run indefinitely until stopped with Ctrl+C. Each run will:
+1. Refresh the GitHub token
+2. Collect current merge queue status
+3. Save to a timestamped file in `stats/`
+4. Wait 30 minutes before repeating
+
+### Running in background
+To run the monitor in the background:
+```bash
+nohup ./monitor_loop.sh > monitor.log 2>&1 &
+```
+
+To stop the background process:
+```bash
+# Find the process ID
+ps aux | grep monitor_loop.sh
+
+# Kill the process
+kill <PID>
+```
+
 ## Requirements
 
 - Python 3.7+
 - GitHub token with repository access
 - `gh` CLI (for easy token retrieval)
+- Bash shell
