@@ -13,7 +13,7 @@ Processes all JSON files in the stats/ directory and generates a CSV with:
 import os
 import json
 import csv
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import List, Dict, Optional
 
@@ -76,6 +76,11 @@ def process_json_file(file_path: Path) -> Optional[Dict]:
             return None
 
         dt = parse_timestamp(timestamp)
+
+        # Convert UTC to PST (UTC-8)
+        pst_offset = timedelta(hours=-8)
+        dt_pst = dt + pst_offset
+
         entries = data.get("entries", [])
         total_prs = data.get("total_prs", len(entries))
 
@@ -93,8 +98,8 @@ def process_json_file(file_path: Path) -> Optional[Dict]:
                 ci_runtime_minutes = calculate_ci_runtime(ci_started_at, dt)
 
         return {
-            "date": dt.strftime("%Y-%m-%d"),
-            "time": dt.strftime("%H:%M:%S"),
+            "date_pst": dt_pst.strftime("%Y-%m-%d"),
+            "time_pst": dt_pst.strftime("%H:%M:%S"),
             "num_prs": total_prs,
             "estimated_clear_time_minutes": clear_time_hours,
             "top_job_ci_runtime_minutes": ci_runtime_minutes
@@ -135,8 +140,8 @@ def generate_csv(stats_dir: str = "stats", output_file: str = "merge_queue_repor
 
     # Write CSV
     fieldnames = [
-        "date",
-        "time",
+        "date_pst",
+        "time_pst",
         "num_prs",
         "estimated_clear_time_minutes",
         "top_job_ci_runtime_minutes"
