@@ -132,6 +132,33 @@ ps aux | grep monitor_loop.sh
 kill <PID>
 ```
 
+## CSV Report Generation
+
+Generate a CSV report from all collected statistics:
+
+```bash
+python generate_csv.py
+```
+
+This will create `merge_queue_report.csv` with the following columns:
+- **date**: Date of collection
+- **time**: Time of collection
+- **num_prs**: Number of PRs in queue
+- **estimated_clear_time_hours**: Estimated time to clear entire queue (hours)
+- **top_job_ci_runtime_minutes**: CI runtime for the top job in queue (minutes)
+
+### Options
+
+```bash
+# Specify custom stats directory
+python generate_csv.py -s /path/to/stats
+
+# Specify custom output file
+python generate_csv.py -o custom_report.csv
+```
+
+The script also prints summary statistics including averages for PRs in queue, estimated clear time, and CI runtime.
+
 ## Requirements
 
 - Python 3.7+
