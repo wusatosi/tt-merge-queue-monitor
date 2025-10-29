@@ -56,40 +56,67 @@ def plot_prs_over_time(df: pd.DataFrame, output_file: str = "prs_over_time.png")
 
 
 def plot_prs_by_hour_of_day(df: pd.DataFrame, output_file: str = "prs_by_hour.png"):
-    """Generate bar chart showing average number of PRs by hour of day."""
-    # Extract hour from datetime
+    """Generate grouped bar chart showing number of PRs by hour for each day."""
+    # Extract date and hour
+    df['date'] = df['datetime_pst'].dt.date
     df['hour'] = df['datetime_pst'].dt.hour
 
-    # Calculate average PRs per hour
-    hourly_avg = df.groupby('hour')['num_prs'].mean()
-
-    fig, ax = plt.subplots(figsize=(12, 6))
-
-    # Create bar chart
+    # Get unique dates
+    dates = sorted(df['date'].unique())
     hours = range(24)
-    values = [hourly_avg.get(h, 0) for h in hours]
 
-    bars = ax.bar(hours, values, color='coral', alpha=0.7)
+    fig, ax = plt.subplots(figsize=(16, 6))
 
-    # Add value labels on top of bars
-    for bar in bars:
-        height = bar.get_height()
-        if height > 0:  # Only show label if there's a value
-            ax.text(bar.get_x() + bar.get_width()/2., height,
-                   f'{height:.1f}',
-                   ha='center', va='bottom', fontsize=9)
+    # Calculate bar width and positions
+    num_days = len(dates)
+    bar_width = 0.8 / num_days if num_days > 0 else 0.8
+
+    # Prepare data: for each hour, get values for each day
+    hour_data = {}
+    for hour in hours:
+        hour_data[hour] = []
+        for date in dates:
+            value = df[(df['hour'] == hour) & (df['date'] == date)]['num_prs'].values
+            if len(value) > 0:
+                hour_data[hour].append(value[0])
+            else:
+                hour_data[hour].append(0)
+
+    # Plot grouped bars with single color
+    for day_idx, date in enumerate(dates):
+        positions = [h + (day_idx - num_days/2 + 0.5) * bar_width for h in hours]
+        values = [hour_data[h][day_idx] for h in hours]
+
+        bars = ax.bar(positions, values, bar_width,
+                     label=f'{date}', color='coral', alpha=0.7)
+
+        # For each hour group, add label only on median bar
+        for hour in hours:
+            if hour_data[hour]:
+                # Get all values for this hour
+                hour_values = hour_data[hour]
+                # Find median value
+                sorted_vals = sorted(hour_values)
+                median_val = sorted_vals[len(sorted_vals) // 2]
+
+                # Check if this day's value is the median
+                if values[hour] == median_val and values[hour] > 0:
+                    ax.text(positions[hour], values[hour],
+                           f'{int(values[hour])}',
+                           ha='center', va='bottom', fontsize=8, fontweight='bold')
 
     # Labels and title
     ax.set_xlabel('Hour of Day (PST)', fontsize=12)
-    ax.set_ylabel('Average Number of PRs', fontsize=12)
-    ax.set_title('Average Merge Queue Size by Hour of Day', fontsize=14, fontweight='bold')
+    ax.set_ylabel('Number of PRs', fontsize=12)
+    ax.set_title('Merge Queue Size by Hour of Day (Grouped by Date)', fontsize=14, fontweight='bold')
 
-    # Set x-axis ticks to show all hours
+    # Set x-axis ticks
     ax.set_xticks(hours)
     ax.set_xticklabels([f'{h:02d}:00' for h in hours], rotation=45, ha='right')
 
-    # Grid for better readability
+    # Grid and legend
     ax.grid(True, alpha=0.3, axis='y')
+    ax.legend(loc='upper right', fontsize=8, ncol=min(num_days, 5))
 
     # Adjust layout
     plt.tight_layout()
