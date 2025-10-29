@@ -85,6 +85,40 @@ jobs:
           git add "${{ env.STATS_FILE }}"
           git commit -m "Add stats: $(basename ${{ env.STATS_FILE }})"
 
+      - name: Generate CSV and graph
+        run: |
+          # Generate CSV from all stats files
+          python generate_csv.py -o summarized.csv
+
+          # Generate graph from CSV
+          python generate_graphs.py -i summarized.csv -o .
+
+          # Rename graph to match expected name
+          mv prs_by_hour.png prs_by_hours.png
+
+      - name: Update README with graph
+        run: |
+          cat > README.md << 'EOF'
+          # Merge Queue Statistics
+
+          This branch contains automated merge queue statistics collected every 30 minutes.
+
+          ## Average PRs by Hour of Day (PST)
+
+          ![PRs by Hour](prs_by_hours.png)
+
+          ## Files
+
+          - `summarized.csv` - CSV summary of all collected statistics
+          - `prs_by_hours.png` - Graph showing average PRs by hour of day
+          - `stats/merge_queue_YYYYMMDD_HHMMSS.json` - Individual JSON stats files
+          EOF
+
+      - name: Commit CSV, graph, and README
+        run: |
+          git add summarized.csv prs_by_hours.png README.md
+          git commit -m "Update summary: CSV, graph, and README"
+
       - name: Push stats to stats-data branch
         run: |
           git push origin stats-data
