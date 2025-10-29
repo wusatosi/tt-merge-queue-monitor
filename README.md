@@ -159,6 +159,28 @@ python generate_csv.py -o custom_report.csv
 
 The script also prints summary statistics including averages for PRs in queue, estimated clear time, and CI runtime.
 
+## Graph Generation
+
+Generate visualizations from the collected statistics:
+
+```bash
+python generate_graphs.py
+```
+
+This creates a bar chart showing the average number of PRs in the merge queue by hour of day (PST), saved to `prs_by_hour.png` in the current directory.
+
+### Options
+
+```bash
+# Specify custom input CSV
+python generate_graphs.py -i custom_report.csv
+
+# Specify custom output directory
+python generate_graphs.py -o output_dir
+```
+
+The graph includes value labels on top of each bar for easy reading.
+
 ## Requirements
 
 - Python 3.7+
