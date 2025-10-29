@@ -51,8 +51,10 @@ jobs:
           python merge_queue_monitor.py -o "$OUTPUT_FILE"
           echo "STATS_FILE=$OUTPUT_FILE" >> $GITHUB_ENV
 
-          # Save the stats file to a temporary location
+          # Save the stats file and scripts to temporary location
           cp "$OUTPUT_FILE" /tmp/stats_temp.json
+          cp generate_csv.py /tmp/
+          cp generate_graphs.py /tmp/
 
       - name: Checkout stats-data branch
         run: |
@@ -87,6 +89,10 @@ jobs:
 
       - name: Generate CSV and graph
         run: |
+          # Restore scripts from temporary location
+          cp /tmp/generate_csv.py .
+          cp /tmp/generate_graphs.py .
+
           # Generate CSV from all stats files
           python generate_csv.py -o summarized.csv
 
