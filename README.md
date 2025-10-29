@@ -187,3 +187,7 @@ The graph includes value labels on top of each bar for easy reading.
 - GitHub token with repository access
 - `gh` CLI (for easy token retrieval)
 - Bash shell
+
+## TODO
+
+- Use reuseable workflow to allow only updating the image
