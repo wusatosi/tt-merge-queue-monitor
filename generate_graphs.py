@@ -78,32 +78,37 @@ def plot_prs_by_hour_of_day(df: pd.DataFrame, output_file: str = "prs_by_hour.pn
         for date in dates:
             value = df[(df['hour'] == hour) & (df['date'] == date)]['num_prs'].values
             if len(value) > 0:
-                hour_data[hour].append(value[0])
+                hour_data[hour].append((value[0], date))
             else:
-                hour_data[hour].append(0)
+                hour_data[hour].append((0, date))
+        # Sort by value descending
+        hour_data[hour].sort(key=lambda x: x[0], reverse=True)
+
+    # Track labeled values per hour and legend dates
+    labeled = {h: set() for h in hours}
+    legend_added = set()
 
     # Plot grouped bars with single color
-    for day_idx, date in enumerate(dates):
-        positions = [h + (day_idx - num_days/2 + 0.5) * bar_width for h in hours]
-        values = [hour_data[h][day_idx] for h in hours]
-
-        bars = ax.bar(positions, values, bar_width,
-                     label=f'{date}', color='coral', alpha=0.7)
-
-        # For each hour group, add label only on median bar
+    for day_idx in range(num_days):
         for hour in hours:
-            if hour_data[hour]:
-                # Get all values for this hour
-                hour_values = hour_data[hour]
-                # Find median value
-                sorted_vals = sorted(hour_values)
-                median_val = sorted_vals[len(sorted_vals) // 2]
+            value, date = hour_data[hour][day_idx]
+            position = hour + (day_idx - num_days/2 + 0.5) * bar_width
 
-                # Check if this day's value is the median
-                if values[hour] == median_val and values[hour] > 0:
-                    ax.text(positions[hour], values[hour],
-                           f'{int(values[hour])}',
-                           ha='center', va='bottom', fontsize=8, fontweight='bold')
+            # Add to legend only once per date
+            lbl = None
+            if date not in legend_added:
+                lbl = f'{date}'
+                legend_added.add(date)
+
+            ax.bar(position, value, bar_width,
+                  label=lbl, color='coral', alpha=0.7)
+
+            # Add label only once per distinct value per hour
+            if value > 0 and value not in labeled[hour]:
+                ax.text(position, value,
+                       f'{int(value)}',
+                       ha='center', va='bottom', fontsize=8, fontweight='bold')
+                labeled[hour].add(value)
 
     # Labels and title
     ax.set_xlabel('Hour of Day (PST)', fontsize=12)
