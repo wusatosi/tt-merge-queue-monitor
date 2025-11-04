@@ -60,10 +60,14 @@ def plot_prs_by_hour_of_day(df: pd.DataFrame, output_file: str = "prs_by_hour.pn
     # Extract date and hour
     df['date'] = df['datetime_pst'].dt.date
     df['hour'] = df['datetime_pst'].dt.hour
+    df['day_of_week'] = df['datetime_pst'].dt.dayofweek  # Monday=0, Sunday=6
+
+    # Filter for workdays only (Monday-Friday) and work hours (6AM-11PM)
+    df = df[(df['day_of_week'] < 5) & (df['hour'] >= 6) & (df['hour'] <= 23)].copy()
 
     # Get unique dates
     dates = sorted(df['date'].unique())
-    hours = range(24)
+    hours = range(6, 24)  # 6AM to 11PM
 
     fig, ax = plt.subplots(figsize=(16, 6))
 
