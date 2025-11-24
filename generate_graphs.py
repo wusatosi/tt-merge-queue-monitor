@@ -56,7 +56,7 @@ def plot_prs_over_time(df: pd.DataFrame, output_file: str = "prs_over_time.png")
 
 
 def plot_prs_by_hour_of_day(df: pd.DataFrame, output_file: str = "prs_by_hour.png"):
-    """Generate grouped bar chart showing number of PRs by hour for each day."""
+    """Generate grouped bar chart showing Max, Median, and Min PRs for each hour."""
     # Extract date and hour
     df['date'] = df['datetime_pst'].dt.date
     df['hour'] = df['datetime_pst'].dt.hour
@@ -65,59 +65,58 @@ def plot_prs_by_hour_of_day(df: pd.DataFrame, output_file: str = "prs_by_hour.pn
     # Filter for workdays only (Monday-Friday) and work hours (6AM-11PM)
     df = df[(df['day_of_week'] < 5) & (df['hour'] >= 6) & (df['hour'] <= 23)].copy()
 
-    # Get unique dates
-    dates = sorted(df['date'].unique())
     hours = range(6, 24)  # 6AM to 11PM
+
+    # Calculate max, median, min for each hour
+    hour_stats = {}
+    for hour in hours:
+        hour_data = df[df['hour'] == hour]['num_prs'].values
+        if len(hour_data) > 0:
+            hour_stats[hour] = {
+                'max': float(hour_data.max()),
+                'median': float(pd.Series(hour_data).median()),
+                'min': float(hour_data.min())
+            }
+        else:
+            hour_stats[hour] = {'max': 0, 'median': 0, 'min': 0}
 
     fig, ax = plt.subplots(figsize=(16, 6))
 
-    # Calculate bar width and positions
-    num_days = len(dates)
-    bar_width = 0.8 / num_days if num_days > 0 else 0.8
+    # Bar width and positions for grouped bars
+    bar_width = 0.25
+    positions_max = [h - bar_width for h in hours]
+    positions_median = [h for h in hours]
+    positions_min = [h + bar_width for h in hours]
 
-    # Prepare data: for each hour, get values for each day
-    hour_data = {}
-    for hour in hours:
-        hour_data[hour] = []
-        for date in dates:
-            value = df[(df['hour'] == hour) & (df['date'] == date)]['num_prs'].values
-            if len(value) > 0:
-                hour_data[hour].append((value[0], date))
-            else:
-                hour_data[hour].append((0, date))
-        # Sort by value descending
-        hour_data[hour].sort(key=lambda x: x[0], reverse=True)
+    # Extract values
+    max_values = [hour_stats[h]['max'] for h in hours]
+    median_values = [hour_stats[h]['median'] for h in hours]
+    min_values = [hour_stats[h]['min'] for h in hours]
 
-    # Track labeled values per hour and legend dates
-    labeled = {h: set() for h in hours}
-    legend_added = set()
+    # Plot grouped bars
+    ax.bar(positions_max, max_values, bar_width, label='Max', color='crimson', alpha=0.8)
+    ax.bar(positions_median, median_values, bar_width, label='Median', color='steelblue', alpha=0.8)
+    ax.bar(positions_min, min_values, bar_width, label='Min', color='seagreen', alpha=0.8)
 
-    # Plot grouped bars with single color
-    for day_idx in range(num_days):
-        for hour in hours:
-            value, date = hour_data[hour][day_idx]
-            position = hour + (day_idx - num_days/2 + 0.5) * bar_width
-
-            # Add to legend only once per date
-            lbl = None
-            if date not in legend_added:
-                lbl = f'{date}'
-                legend_added.add(date)
-
-            ax.bar(position, value, bar_width,
-                  label=lbl, color='coral', alpha=0.7)
-
-            # Add label only once per distinct value per hour
-            if value > 0 and value not in labeled[hour]:
-                ax.text(position, value,
-                       f'{int(value)}',
-                       ha='center', va='bottom', fontsize=8, fontweight='bold')
-                labeled[hour].add(value)
+    # Add value labels on bars
+    for i, hour in enumerate(hours):
+        # Label max
+        if max_values[i] > 0:
+            ax.text(positions_max[i], max_values[i], f'{int(max_values[i])}',
+                   ha='center', va='bottom', fontsize=8, fontweight='bold')
+        # Label median
+        if median_values[i] > 0:
+            ax.text(positions_median[i], median_values[i], f'{median_values[i]:.1f}',
+                   ha='center', va='bottom', fontsize=8, fontweight='bold')
+        # Label min
+        if min_values[i] > 0:
+            ax.text(positions_min[i], min_values[i], f'{int(min_values[i])}',
+                   ha='center', va='bottom', fontsize=8, fontweight='bold')
 
     # Labels and title
     ax.set_xlabel('Hour of Day (PST)', fontsize=12)
     ax.set_ylabel('Number of PRs', fontsize=12)
-    ax.set_title('Merge Queue Size by Hour of Day (Grouped by Date)', fontsize=14, fontweight='bold')
+    ax.set_title('Merge Queue Size by Hour of Day (Max, Median, Min)', fontsize=14, fontweight='bold')
 
     # Set x-axis ticks
     ax.set_xticks(hours)
@@ -125,7 +124,7 @@ def plot_prs_by_hour_of_day(df: pd.DataFrame, output_file: str = "prs_by_hour.pn
 
     # Grid and legend
     ax.grid(True, alpha=0.3, axis='y')
-    ax.legend(loc='upper right', fontsize=8, ncol=min(num_days, 5))
+    ax.legend(loc='upper right', fontsize=10)
 
     # Adjust layout
     plt.tight_layout()
