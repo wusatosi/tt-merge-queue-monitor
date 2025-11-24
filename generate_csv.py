@@ -118,8 +118,8 @@ def generate_csv(stats_dir: str = "stats", output_file: str = "merge_queue_repor
         print(f"Error: Stats directory '{stats_dir}' does not exist")
         return
 
-    # Find all JSON files
-    json_files = sorted(stats_path.glob("merge_queue_*.json"))
+    # Find all JSON files (including in subdirectories)
+    json_files = sorted(stats_path.glob("**/merge_queue_*.json"))
 
     if not json_files:
         print(f"No JSON files found in {stats_dir}")
