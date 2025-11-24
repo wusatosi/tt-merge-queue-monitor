@@ -10,4 +10,4 @@ This branch contains automated merge queue statistics collected every 30 minutes
 
 - `summarized.csv` - CSV summary of all collected statistics
 - `prs_by_hours.png` - Graph showing average PRs by hour of day
-- `stats/merge_queue_YYYYMMDD_HHMMSS.json` - Individual JSON stats files
+- `stats/YYYY-MM/merge_queue_YYYYMMDD_HHMMSS.json` - Individual JSON stats files organized by month
