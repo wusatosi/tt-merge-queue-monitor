@@ -1,0 +1,20 @@
+name: Stats Collection (Cron Driver)
+
+on:
+  schedule:
+    # Run every 30 minutes
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+    # Allow manual triggering
+
+jobs:
+  collect-stats:
+    uses: ./.github/workflows/collect-stats-impl.yml
+    permissions:
+      contents: write
+
+  generate-summary:
+    needs: collect-stats
+    uses: ./.github/workflows/generate-summary-impl.yml
+    permissions:
+      contents: write
