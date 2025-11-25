@@ -55,6 +55,65 @@ def plot_prs_over_time(df: pd.DataFrame, output_file: str = "prs_over_time.png")
     plt.close()
 
 
+def plot_prs_by_hour_individual(df: pd.DataFrame, output_file: str, time_period: str):
+    """Generate bar chart showing individual data points for each hour (for short time periods)."""
+    # Extract date and hour
+    df['date'] = df['datetime_pst'].dt.date
+    df['hour'] = df['datetime_pst'].dt.hour
+    df['day_of_week'] = df['datetime_pst'].dt.dayofweek
+
+    # Filter for workdays only (Monday-Friday) and work hours (6AM-11PM)
+    df = df[(df['day_of_week'] < 5) & (df['hour'] >= 6) & (df['hour'] <= 23)].copy()
+
+    hours = range(6, 24)
+    fig, ax = plt.subplots(figsize=(16, 6))
+
+    # Get unique dates
+    dates = sorted(df['date'].unique())
+    num_dates = len(dates)
+    bar_width = 0.8 / max(num_dates, 1)
+
+    # Use different colors for different dates
+    colors = plt.cm.Set3(range(num_dates))
+
+    for date_idx, date in enumerate(dates):
+        hour_values = []
+        for hour in hours:
+            value = df[(df['hour'] == hour) & (df['date'] == date)]['num_prs'].values
+            hour_values.append(value[0] if len(value) > 0 else 0)
+
+        positions = [h + (date_idx - num_dates/2 + 0.5) * bar_width for h in hours]
+        ax.bar(positions, hour_values, bar_width, label=str(date), color=colors[date_idx], alpha=0.8)
+
+        # Add value labels
+        for pos, val in zip(positions, hour_values):
+            if val > 0:
+                ax.text(pos, val, f'{int(val)}', ha='center', va='bottom', fontsize=8, fontweight='bold')
+
+    # Labels and title
+    ax.set_xlabel('Hour of Day (PST)', fontsize=12)
+    ax.set_ylabel('Number of PRs', fontsize=12)
+    title = f'PRs by Hour of Day ({time_period})'
+    ax.set_title(title, fontsize=14, fontweight='bold')
+
+    # Set x-axis ticks
+    ax.set_xticks(hours)
+    ax.set_xticklabels([f'{h:02d}:00' for h in hours], rotation=45, ha='right')
+
+    # Grid and legend
+    ax.grid(True, alpha=0.3, axis='y')
+    ax.legend(loc='upper right', fontsize=10)
+
+    # Adjust layout
+    plt.tight_layout()
+
+    # Save figure
+    plt.savefig(output_file, dpi=150, bbox_inches='tight')
+    print(f"Saved graph to: {output_file}")
+
+    plt.close()
+
+
 def plot_prs_by_hour_of_day(df: pd.DataFrame, output_file: str = "prs_by_hour.png", time_period: str = "all"):
     """Generate grouped bar chart showing Max, Median, and Min PRs for each hour.
 
@@ -251,7 +310,12 @@ def generate_all_graphs(csv_file: str, output_dir: str = "."):
             continue
 
         output_file = str(output_path / f"prs_by_hour_{period_key}.png")
-        plot_prs_by_hour_of_day(df_filtered, output_file, period_label)
+
+        # For "Last Day", show individual data points instead of max/median/min
+        if period_key == 'last_day':
+            plot_prs_by_hour_individual(df_filtered, output_file, period_label)
+        else:
+            plot_prs_by_hour_of_day(df_filtered, output_file, period_label)
 
     # Optionally generate other graphs (commented out by default)
     # plot_prs_over_time(df, str(output_path / "prs_over_time.png"))
