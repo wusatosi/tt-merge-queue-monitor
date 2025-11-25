@@ -55,8 +55,14 @@ def plot_prs_over_time(df: pd.DataFrame, output_file: str = "prs_over_time.png")
     plt.close()
 
 
-def plot_prs_by_hour_of_day(df: pd.DataFrame, output_file: str = "prs_by_hour.png"):
-    """Generate grouped bar chart showing Max, Median, and Min PRs for each hour."""
+def plot_prs_by_hour_of_day(df: pd.DataFrame, output_file: str = "prs_by_hour.png", time_period: str = "all"):
+    """Generate grouped bar chart showing Max, Median, and Min PRs for each hour.
+
+    Args:
+        df: DataFrame with stats data
+        output_file: Output filename
+        time_period: Time period label for the graph title
+    """
     # Extract date and hour
     df['date'] = df['datetime_pst'].dt.date
     df['hour'] = df['datetime_pst'].dt.hour
@@ -116,7 +122,8 @@ def plot_prs_by_hour_of_day(df: pd.DataFrame, output_file: str = "prs_by_hour.pn
     # Labels and title
     ax.set_xlabel('Hour of Day (PST)', fontsize=12)
     ax.set_ylabel('Number of PRs', fontsize=12)
-    ax.set_title('Merge Queue Size by Hour of Day (Max, Median, Min)', fontsize=14, fontweight='bold')
+    title = f'Average PRs by Hour of Day ({time_period})'
+    ax.set_title(title, fontsize=14, fontweight='bold')
 
     # Set x-axis ticks
     ax.set_xticks(hours)
@@ -224,15 +231,34 @@ def generate_all_graphs(csv_file: str, output_dir: str = "."):
 
     print(f"Generating graphs in {output_dir}...")
 
-    # Generate PRs by hour of day graph
-    plot_prs_by_hour_of_day(df, str(output_path / "prs_by_hour.png"))
+    # Get the most recent date in the dataset
+    max_date = df['datetime_pst'].max()
+
+    # Define time periods
+    time_periods = {
+        'last_day': (max_date - pd.Timedelta(days=1), 'Last Day'),
+        'last_week': (max_date - pd.Timedelta(weeks=1), 'Last Week'),
+        'last_month': (max_date - pd.Timedelta(days=30), 'Last Month'),
+        'all': (df['datetime_pst'].min(), 'All Time')
+    }
+
+    # Generate graphs for each time period
+    for period_key, (start_date, period_label) in time_periods.items():
+        df_filtered = df[df['datetime_pst'] >= start_date].copy()
+
+        if len(df_filtered) == 0:
+            print(f"Warning: No data for {period_label}, skipping...")
+            continue
+
+        output_file = str(output_path / f"prs_by_hour_{period_key}.png")
+        plot_prs_by_hour_of_day(df_filtered, output_file, period_label)
 
     # Optionally generate other graphs (commented out by default)
     # plot_prs_over_time(df, str(output_path / "prs_over_time.png"))
     # plot_estimated_clear_time(df, str(output_path / "clear_time_over_time.png"))
     # plot_ci_runtime(df, str(output_path / "ci_runtime_over_time.png"))
 
-    print("\nGraph generated successfully!")
+    print("\nGraphs generated successfully!")
 
 
 def main():
