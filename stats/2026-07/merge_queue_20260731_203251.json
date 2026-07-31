@@ -1,0 +1,3869 @@
+{
+  "timestamp": "2026-07-31T20:32:52.717970",
+  "repository": "tenstorrent/tt-metal",
+  "branch": "main",
+  "total_prs": 5,
+  "entries": [
+    {
+      "position": 1,
+      "state": "AWAITING_CHECKS",
+      "pr_number": 51234,
+      "pr_title": "[Quasar] Clean up unpack_reduce_tilizeA_B_init and use hw_startup + init",
+      "pr_url": "https://github.com/tenstorrent/tt-metal/pull/51234",
+      "author": "amokanTT",
+      "enqueued_at": "2026-07-31T19:10:46Z",
+      "estimated_time_to_merge_seconds": 1639,
+      "time_in_queue": "1.4 hours",
+      "commit": {
+        "sha": "982f715002293421286855019b7e26f53a1e36f3",
+        "url": "https://github.com/tenstorrent/tt-metal/commit/982f715002293421286855019b7e26f53a1e36f3"
+      },
+      "ci_status": {
+        "overall_state": "PENDING",
+        "ci_started_at": "2026-07-31T19:56:35Z",
+        "total_checks": 100,
+        "running": 2,
+        "completed": 98,
+        "queued": 0,
+        "checks": [
+          {
+            "name": "static-checks / find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:46Z",
+            "completed_at": "2026-07-31T19:58:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91256931268"
+          },
+          {
+            "name": "check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:36Z",
+            "completed_at": "2026-07-31T19:56:40Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91256929136"
+          },
+          {
+            "name": "find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:36Z",
+            "completed_at": "2026-07-31T19:58:23Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660995931/job/91256924972"
+          },
+          {
+            "name": "static-checks / Run Pre-commit Hooks",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:41Z",
+            "completed_at": "2026-07-31T19:58:12Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91256931309"
+          },
+          {
+            "name": "find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:57:01Z",
+            "completed_at": "2026-07-31T19:58:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91256929028"
+          },
+          {
+            "name": "Run Pre-commit Hooks",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:36Z",
+            "completed_at": "2026-07-31T19:58:18Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660995931/job/91256924970"
+          },
+          {
+            "name": "copilot-pr-labeler",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:56:35Z",
+            "completed_at": "2026-07-31T19:56:35Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91256929994"
+          },
+          {
+            "name": "static-checks / check-spdx-licenses",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:41Z",
+            "completed_at": "2026-07-31T19:57:44Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91256931448"
+          },
+          {
+            "name": "check-spdx-licenses",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:36Z",
+            "completed_at": "2026-07-31T19:57:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660995931/job/91256924880"
+          },
+          {
+            "name": "static-checks / check-metal-kernel-count",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:41Z",
+            "completed_at": "2026-07-31T19:56:51Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91256931319"
+          },
+          {
+            "name": "build-docker-images / Artifact metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:45Z",
+            "completed_at": "2026-07-31T19:57:18Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91256947532"
+          },
+          {
+            "name": "check-metal-kernel-count",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:36Z",
+            "completed_at": "2026-07-31T19:56:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660995931/job/91256924901"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udd27 Build tool images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:57:18Z",
+            "completed_at": "2026-07-31T19:57:18Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257079304"
+          },
+          {
+            "name": "static-checks / check-doc",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:57:20Z",
+            "completed_at": "2026-07-31T19:57:37Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91256931328"
+          },
+          {
+            "name": "check-doc",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:36Z",
+            "completed_at": "2026-07-31T19:57:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660995931/job/91256924907"
+          },
+          {
+            "name": "static-checks / check-forbidden-imports",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:47Z",
+            "completed_at": "2026-07-31T19:56:56Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91256931395"
+          },
+          {
+            "name": "check-forbidden-imports",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:42Z",
+            "completed_at": "2026-07-31T19:56:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660995931/job/91256924917"
+          },
+          {
+            "name": "static-checks / check-interleaved-addr-gen-usage",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:40Z",
+            "completed_at": "2026-07-31T19:58:08Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91256931180"
+          },
+          {
+            "name": "check-interleaved-addr-gen-usage",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:36Z",
+            "completed_at": "2026-07-31T19:58:11Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660995931/job/91256924987"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc0d Python venvs",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:57:18Z",
+            "completed_at": "2026-07-31T19:57:18Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257079658"
+          },
+          {
+            "name": "static-checks / check-sweeps-workflow",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:42Z",
+            "completed_at": "2026-07-31T19:57:00Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91256931158"
+          },
+          {
+            "name": "check-sweeps-workflow",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:36Z",
+            "completed_at": "2026-07-31T19:56:53Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660995931/job/91256924912"
+          },
+          {
+            "name": "static-checks / check-docker-bake-ci",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:40Z",
+            "completed_at": "2026-07-31T19:57:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91256931173"
+          },
+          {
+            "name": "check-docker-bake-ci",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:43Z",
+            "completed_at": "2026-07-31T19:56:56Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660995931/job/91256924923"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33\ufe0f Build LLK Docker images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:57:18Z",
+            "completed_at": "2026-07-31T19:57:18Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257079653"
+          },
+          {
+            "name": "static-checks / codeowners-validator",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:40Z",
+            "completed_at": "2026-07-31T19:56:55Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91256931200"
+          },
+          {
+            "name": "codeowners-validator",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:36Z",
+            "completed_at": "2026-07-31T19:56:57Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660995931/job/91256924986"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33 ManyLinux image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:57:18Z",
+            "completed_at": "2026-07-31T19:57:18Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257079990"
+          },
+          {
+            "name": "static-checks / check-symlinks-valid",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:41Z",
+            "completed_at": "2026-07-31T19:56:55Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91256931249"
+          },
+          {
+            "name": "check-symlinks-valid",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:36Z",
+            "completed_at": "2026-07-31T19:57:02Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660995931/job/91256924971"
+          },
+          {
+            "name": "static-checks / check-docs-links",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:26Z",
+            "completed_at": "2026-07-31T19:58:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257311016"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33 Ubuntu images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:57:18Z",
+            "completed_at": "2026-07-31T19:57:18Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257079680"
+          },
+          {
+            "name": "check-docs-links",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:23Z",
+            "completed_at": "2026-07-31T19:58:23Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660995931/job/91257302752"
+          },
+          {
+            "name": "build-docker-images / \ud83c\udff7\ufe0f Update latest tags",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:57:18Z",
+            "completed_at": "2026-07-31T19:57:18Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257080360"
+          },
+          {
+            "name": "docker-images / check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:57:39Z",
+            "completed_at": "2026-07-31T19:57:43Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91256931456"
+          },
+          {
+            "name": "model-charts-sync",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:50Z",
+            "completed_at": "2026-07-31T19:58:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257396817"
+          },
+          {
+            "name": "docker-images / Calculate Tags",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:57:54Z",
+            "completed_at": "2026-07-31T19:58:35Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257165962"
+          },
+          {
+            "name": "docker-images / Build LLK CI image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:35Z",
+            "completed_at": "2026-07-31T19:58:35Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257344712"
+          },
+          {
+            "name": "llk-label-pr",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:50Z",
+            "completed_at": "2026-07-31T19:58:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257396433"
+          },
+          {
+            "name": "docker-images / Build tool images / Tool metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:58:48Z",
+            "completed_at": "2026-07-31T19:58:51Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257344229"
+          },
+          {
+            "name": "resolve-docker-pull-refs / Resolve Docker pull refs",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:57:21Z",
+            "completed_at": "2026-07-31T19:57:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257079718"
+          },
+          {
+            "name": "docker-images / Build tool images / Prepare tool build matrix",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:35Z",
+            "completed_at": "2026-07-31T19:58:35Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257345172"
+          },
+          {
+            "name": "code-analysis / determine-scan-type",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:59:00Z",
+            "completed_at": "2026-07-31T20:00:33Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257395877"
+          },
+          {
+            "name": "docker-images / Build tool images / \ud83d\udd27 Build ${{ matrix.tool }}",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:36Z",
+            "completed_at": "2026-07-31T19:58:35Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257345445"
+          },
+          {
+            "name": "code-analysis / check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:58:53Z",
+            "completed_at": "2026-07-31T19:58:57Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257395998"
+          },
+          {
+            "name": "code-analysis / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:57Z",
+            "completed_at": "2026-07-31T19:58:57Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257418560"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / Artifact metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:58:54Z",
+            "completed_at": "2026-07-31T19:59:16Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257398587"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udd27 Build tool images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:17Z",
+            "completed_at": "2026-07-31T19:59:17Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257487466"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc0d Python venvs",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:17Z",
+            "completed_at": "2026-07-31T19:59:17Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257487942"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc33\ufe0f Build LLK Docker images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:17Z",
+            "completed_at": "2026-07-31T19:59:17Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257487426"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc33 ManyLinux image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:17Z",
+            "completed_at": "2026-07-31T19:59:17Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257488061"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc33 Ubuntu images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:17Z",
+            "completed_at": "2026-07-31T19:59:17Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257488059"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83c\udff7\ufe0f Update latest tags",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:17Z",
+            "completed_at": "2026-07-31T19:59:17Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257488210"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / Artifact metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:59:00Z",
+            "completed_at": "2026-07-31T19:59:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257398619"
+          },
+          {
+            "name": "code-analysis / resolve-docker-pull-refs / Resolve Docker pull refs",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:59:09Z",
+            "completed_at": "2026-07-31T19:59:13Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257418289"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (Full) / \ud83e\udd16 Clang Tidy",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:07:22Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257754077"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udd27 Build tool images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:25Z",
+            "completed_at": "2026-07-31T19:59:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257515559"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (Metalium)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:00:33Z",
+            "completed_at": "2026-07-31T20:00:33Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257755006"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (TTNN)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:00:33Z",
+            "completed_at": "2026-07-31T20:00:33Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257755188"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc0d Python venvs",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:25Z",
+            "completed_at": "2026-07-31T19:59:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257515950"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (tt-train)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:00:33Z",
+            "completed_at": "2026-07-31T20:00:33Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257754578"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (catchall)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:00:33Z",
+            "completed_at": "2026-07-31T20:00:33Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257754930"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc33\ufe0f Build LLK Docker images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:25Z",
+            "completed_at": "2026-07-31T19:59:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257515717"
+          },
+          {
+            "name": "asan-build / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:59:07Z",
+            "completed_at": "2026-07-31T19:59:12Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257395878"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc33 ManyLinux image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:25Z",
+            "completed_at": "2026-07-31T19:59:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257516116"
+          },
+          {
+            "name": "asan-build / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:50Z",
+            "completed_at": "2026-07-31T19:58:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257396730"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc33 Ubuntu images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:25Z",
+            "completed_at": "2026-07-31T19:59:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257516131"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83c\udff7\ufe0f Update latest tags",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:26Z",
+            "completed_at": "2026-07-31T19:59:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257517047"
+          },
+          {
+            "name": "docker-images / Prewarm cache from GHCR via HARBOR",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:26Z",
+            "completed_at": "2026-07-31T19:59:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257516991"
+          },
+          {
+            "name": "check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:57:39Z",
+            "completed_at": "2026-07-31T19:57:42Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91256931273"
+          },
+          {
+            "name": "find-changes",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:48Z",
+            "completed_at": "2026-07-31T19:58:07Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91256931143"
+          },
+          {
+            "name": "resolve-docker-pull-refs-llk / Resolve Docker pull refs",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:59:43Z",
+            "completed_at": "2026-07-31T19:59:48Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257517320"
+          },
+          {
+            "name": "build / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:59:32Z",
+            "completed_at": "2026-07-31T19:59:39Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257517357"
+          },
+          {
+            "name": "build / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:26Z",
+            "completed_at": "2026-07-31T19:59:26Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257518224"
+          },
+          {
+            "name": "asan-build / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:50Z",
+            "completed_at": "2026-07-31T19:58:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257396341"
+          },
+          {
+            "name": "asan-build / \ud83d\udee0\ufe0f Build ASan ubuntu 24.04",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T19:59:15Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257472409"
+          },
+          {
+            "name": "asan-build / \ud83d\udc0d Build wheel (Python 3.12)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:13Z",
+            "completed_at": "2026-07-31T19:59:12Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257473155"
+          },
+          {
+            "name": "llk-smoke-tests",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:50Z",
+            "completed_at": "2026-07-31T19:58:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257396783"
+          },
+          {
+            "name": "llk-build-quasar",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:50Z",
+            "completed_at": "2026-07-31T19:58:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660996824/job/91257396388"
+          },
+          {
+            "name": "build / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:26Z",
+            "completed_at": "2026-07-31T19:59:26Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257518171"
+          },
+          {
+            "name": "build / \ud83d\udee0\ufe0f Build Release ubuntu 22.04",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:02:52Z",
+            "completed_at": "2026-07-31T20:19:43Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257562846"
+          },
+          {
+            "name": "build / \ud83d\udc0d Build wheel (Python 3.10)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:39Z",
+            "completed_at": "2026-07-31T19:59:39Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257564717"
+          },
+          {
+            "name": "build-tsan / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:00:10Z",
+            "completed_at": "2026-07-31T20:00:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257517334"
+          },
+          {
+            "name": "build-tsan / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:26Z",
+            "completed_at": "2026-07-31T19:59:26Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257518123"
+          },
+          {
+            "name": "build-tsan / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:26Z",
+            "completed_at": "2026-07-31T19:59:26Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257517887"
+          },
+          {
+            "name": "build-tsan / \ud83d\udee0\ufe0f Build TSan ubuntu 24.04",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:07:05Z",
+            "completed_at": "2026-07-31T20:26:33Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257728663"
+          },
+          {
+            "name": "build-tsan / \ud83d\udc0d Build wheel (Python 3.12)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:00:26Z",
+            "completed_at": "2026-07-31T20:00:26Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257729189"
+          },
+          {
+            "name": "build-asan / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:59:50Z",
+            "completed_at": "2026-07-31T20:00:00Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257517361"
+          },
+          {
+            "name": "build-asan / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:26Z",
+            "completed_at": "2026-07-31T19:59:26Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257517981"
+          },
+          {
+            "name": "build-asan / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:26Z",
+            "completed_at": "2026-07-31T19:59:26Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257517884"
+          },
+          {
+            "name": "build-asan / \ud83d\udee0\ufe0f Build ASan ubuntu 24.04",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:28Z",
+            "completed_at": "2026-07-31T20:29:35Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257635050"
+          },
+          {
+            "name": "build-asan / \ud83d\udc0d Build wheel (Python 3.12)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:00:01Z",
+            "completed_at": "2026-07-31T20:00:00Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257635911"
+          },
+          {
+            "name": "build-sweeps / check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:59:30Z",
+            "completed_at": "2026-07-31T19:59:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257517470"
+          },
+          {
+            "name": "build-sweeps / build-dispatch",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:36Z",
+            "completed_at": "2026-07-31T19:59:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257553078"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:59:42Z",
+            "completed_at": "2026-07-31T19:59:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257552831"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:36Z",
+            "completed_at": "2026-07-31T19:59:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257554048"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:36Z",
+            "completed_at": "2026-07-31T19:59:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257553510"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / \ud83d\udee0\ufe0f Build Debug ubuntu 22.04",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:00Z",
+            "completed_at": "2026-07-31T20:29:53Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257599669"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / \ud83d\udc0d Build wheel (Python 3.10)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:50Z",
+            "completed_at": "2026-07-31T19:59:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257600210"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libcpp-toolchain.cmake, Release) / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:59:42Z",
+            "completed_at": "2026-07-31T19:59:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660997154/job/91257552838"
+          }
+        ]
+      }
+    },
+    {
+      "position": 2,
+      "state": "AWAITING_CHECKS",
+      "pr_number": 49771,
+      "pr_title": "Runtime Test: add op-to-op latency CI microbenchmark (Runtime Performance Tests pipeline)",
+      "pr_url": "https://github.com/tenstorrent/tt-metal/pull/49771",
+      "author": "msudumbrekar-TT",
+      "enqueued_at": "2026-07-31T19:47:06Z",
+      "estimated_time_to_merge_seconds": 2231,
+      "time_in_queue": "45 minutes",
+      "commit": {
+        "sha": "4762b09d2be26787376f105584722fe62c582f86",
+        "url": "https://github.com/tenstorrent/tt-metal/commit/4762b09d2be26787376f105584722fe62c582f86"
+      },
+      "ci_status": {
+        "overall_state": "PENDING",
+        "ci_started_at": "2026-07-31T19:56:40Z",
+        "total_checks": 100,
+        "running": 6,
+        "completed": 94,
+        "queued": 0,
+        "checks": [
+          {
+            "name": "static-checks / find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:52Z",
+            "completed_at": "2026-07-31T19:58:48Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91256947571"
+          },
+          {
+            "name": "check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:57:40Z",
+            "completed_at": "2026-07-31T19:57:45Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91256947147"
+          },
+          {
+            "name": "find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:40Z",
+            "completed_at": "2026-07-31T19:58:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660999266/job/91256935646"
+          },
+          {
+            "name": "static-checks / Run Pre-commit Hooks",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:44Z",
+            "completed_at": "2026-07-31T19:58:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91256947648"
+          },
+          {
+            "name": "find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:45Z",
+            "completed_at": "2026-07-31T19:57:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91256946944"
+          },
+          {
+            "name": "Run Pre-commit Hooks",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:40Z",
+            "completed_at": "2026-07-31T19:58:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660999266/job/91256935691"
+          },
+          {
+            "name": "copilot-pr-labeler",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:56:40Z",
+            "completed_at": "2026-07-31T19:56:40Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91256947908"
+          },
+          {
+            "name": "static-checks / check-spdx-licenses",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:51Z",
+            "completed_at": "2026-07-31T19:57:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91256947593"
+          },
+          {
+            "name": "check-spdx-licenses",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:41Z",
+            "completed_at": "2026-07-31T19:57:47Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660999266/job/91256935554"
+          },
+          {
+            "name": "static-checks / check-metal-kernel-count",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:45Z",
+            "completed_at": "2026-07-31T19:57:03Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91256947597"
+          },
+          {
+            "name": "build-docker-images / Artifact metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:57:48Z",
+            "completed_at": "2026-07-31T19:58:21Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257173816"
+          },
+          {
+            "name": "check-metal-kernel-count",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:41Z",
+            "completed_at": "2026-07-31T19:56:57Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660999266/job/91256935688"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udd27 Build tool images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:21Z",
+            "completed_at": "2026-07-31T19:58:21Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257296654"
+          },
+          {
+            "name": "static-checks / check-doc",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:44Z",
+            "completed_at": "2026-07-31T19:57:09Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91256947561"
+          },
+          {
+            "name": "check-doc",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:47Z",
+            "completed_at": "2026-07-31T19:57:05Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660999266/job/91256935687"
+          },
+          {
+            "name": "static-checks / check-forbidden-imports",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:44Z",
+            "completed_at": "2026-07-31T19:56:57Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91256947562"
+          },
+          {
+            "name": "check-forbidden-imports",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:42Z",
+            "completed_at": "2026-07-31T19:56:58Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660999266/job/91256935620"
+          },
+          {
+            "name": "static-checks / check-interleaved-addr-gen-usage",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:45Z",
+            "completed_at": "2026-07-31T19:58:19Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91256947596"
+          },
+          {
+            "name": "check-interleaved-addr-gen-usage",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:42Z",
+            "completed_at": "2026-07-31T19:58:59Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660999266/job/91256935763"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc0d Python venvs",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:21Z",
+            "completed_at": "2026-07-31T19:58:21Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257296402"
+          },
+          {
+            "name": "static-checks / check-sweeps-workflow",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:51Z",
+            "completed_at": "2026-07-31T19:57:05Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91256947619"
+          },
+          {
+            "name": "check-sweeps-workflow",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:41Z",
+            "completed_at": "2026-07-31T19:57:02Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660999266/job/91256935735"
+          },
+          {
+            "name": "static-checks / check-docker-bake-ci",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:45Z",
+            "completed_at": "2026-07-31T19:57:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91256947496"
+          },
+          {
+            "name": "check-docker-bake-ci",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:41Z",
+            "completed_at": "2026-07-31T19:57:00Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660999266/job/91256935781"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33\ufe0f Build LLK Docker images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:21Z",
+            "completed_at": "2026-07-31T19:58:21Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257296450"
+          },
+          {
+            "name": "static-checks / codeowners-validator",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:44Z",
+            "completed_at": "2026-07-31T19:57:05Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91256947618"
+          },
+          {
+            "name": "codeowners-validator",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:49Z",
+            "completed_at": "2026-07-31T19:57:07Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660999266/job/91256935737"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33 ManyLinux image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:22Z",
+            "completed_at": "2026-07-31T19:58:21Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257297164"
+          },
+          {
+            "name": "static-checks / check-symlinks-valid",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:50Z",
+            "completed_at": "2026-07-31T19:57:03Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91256947637"
+          },
+          {
+            "name": "check-symlinks-valid",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:56:41Z",
+            "completed_at": "2026-07-31T19:56:58Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660999266/job/91256935692"
+          },
+          {
+            "name": "static-checks / check-docs-links",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:49Z",
+            "completed_at": "2026-07-31T19:58:48Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257390853"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33 Ubuntu images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:22Z",
+            "completed_at": "2026-07-31T19:58:21Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257297350"
+          },
+          {
+            "name": "check-docs-links",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:25Z",
+            "completed_at": "2026-07-31T19:58:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30660999266/job/91257309845"
+          },
+          {
+            "name": "build-docker-images / \ud83c\udff7\ufe0f Update latest tags",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:22Z",
+            "completed_at": "2026-07-31T19:58:21Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257297816"
+          },
+          {
+            "name": "docker-images / check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:57:43Z",
+            "completed_at": "2026-07-31T19:57:47Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91256947601"
+          },
+          {
+            "name": "model-charts-sync",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:57:52Z",
+            "completed_at": "2026-07-31T19:57:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257195293"
+          },
+          {
+            "name": "docker-images / Calculate Tags",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:57:51Z",
+            "completed_at": "2026-07-31T19:58:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257178971"
+          },
+          {
+            "name": "docker-images / Build LLK CI image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:25Z",
+            "completed_at": "2026-07-31T19:58:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257310455"
+          },
+          {
+            "name": "llk-label-pr",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:57:52Z",
+            "completed_at": "2026-07-31T19:57:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257195324"
+          },
+          {
+            "name": "docker-images / Build tool images / Tool metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:58:41Z",
+            "completed_at": "2026-07-31T19:58:43Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257309942"
+          },
+          {
+            "name": "resolve-docker-pull-refs / Resolve Docker pull refs",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:58:39Z",
+            "completed_at": "2026-07-31T19:58:45Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257297929"
+          },
+          {
+            "name": "docker-images / Build tool images / Prepare tool build matrix",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:26Z",
+            "completed_at": "2026-07-31T19:58:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257310775"
+          },
+          {
+            "name": "code-analysis / determine-scan-type",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:58:30Z",
+            "completed_at": "2026-07-31T20:00:02Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257297974"
+          },
+          {
+            "name": "docker-images / Build tool images / \ud83d\udd27 Build ${{ matrix.tool }}",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:26Z",
+            "completed_at": "2026-07-31T19:58:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257311302"
+          },
+          {
+            "name": "code-analysis / check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:58:24Z",
+            "completed_at": "2026-07-31T19:58:29Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257298133"
+          },
+          {
+            "name": "code-analysis / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:29Z",
+            "completed_at": "2026-07-31T19:58:29Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257323321"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / Artifact metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:58:47Z",
+            "completed_at": "2026-07-31T19:59:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257373521"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udd27 Build tool images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:04Z",
+            "completed_at": "2026-07-31T19:59:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257443090"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc0d Python venvs",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:04Z",
+            "completed_at": "2026-07-31T19:59:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257443087"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc33\ufe0f Build LLK Docker images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:04Z",
+            "completed_at": "2026-07-31T19:59:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257443243"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc33 ManyLinux image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:04Z",
+            "completed_at": "2026-07-31T19:59:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257443174"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc33 Ubuntu images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:04Z",
+            "completed_at": "2026-07-31T19:59:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257443249"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83c\udff7\ufe0f Update latest tags",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:04Z",
+            "completed_at": "2026-07-31T19:59:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257443931"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / Artifact metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:58:47Z",
+            "completed_at": "2026-07-31T19:59:00Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257373420"
+          },
+          {
+            "name": "code-analysis / resolve-docker-pull-refs / Resolve Docker pull refs",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:58:42Z",
+            "completed_at": "2026-07-31T19:58:46Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257323284"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (Full) / \ud83e\udd16 Clang Tidy",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:04:09Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257640082"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udd27 Build tool images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:01Z",
+            "completed_at": "2026-07-31T19:59:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257431715"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (Metalium)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:00:02Z",
+            "completed_at": "2026-07-31T20:00:02Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257640968"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (TTNN)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:00:02Z",
+            "completed_at": "2026-07-31T20:00:02Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257640810"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc0d Python venvs",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:01Z",
+            "completed_at": "2026-07-31T19:59:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257431741"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (tt-train)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:00:02Z",
+            "completed_at": "2026-07-31T20:00:02Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257640656"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (catchall)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:00:02Z",
+            "completed_at": "2026-07-31T20:00:02Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257640726"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc33\ufe0f Build LLK Docker images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:01Z",
+            "completed_at": "2026-07-31T19:59:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257431891"
+          },
+          {
+            "name": "asan-build / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:58:59Z",
+            "completed_at": "2026-07-31T19:59:17Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257378860"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc33 ManyLinux image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:01Z",
+            "completed_at": "2026-07-31T19:59:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257432151"
+          },
+          {
+            "name": "asan-build / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:45Z",
+            "completed_at": "2026-07-31T19:58:45Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257379466"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc33 Ubuntu images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:01Z",
+            "completed_at": "2026-07-31T19:59:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257432030"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83c\udff7\ufe0f Update latest tags",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:01Z",
+            "completed_at": "2026-07-31T19:59:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257432654"
+          },
+          {
+            "name": "docker-images / Prewarm cache from GHCR via HARBOR",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:05Z",
+            "completed_at": "2026-07-31T19:59:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257444514"
+          },
+          {
+            "name": "check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:57:42Z",
+            "completed_at": "2026-07-31T19:57:45Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91256947565"
+          },
+          {
+            "name": "find-changes",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:57:03Z",
+            "completed_at": "2026-07-31T19:58:11Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91256947420"
+          },
+          {
+            "name": "resolve-docker-pull-refs-llk / Resolve Docker pull refs",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:59:18Z",
+            "completed_at": "2026-07-31T19:59:23Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257444251"
+          },
+          {
+            "name": "build / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:59:09Z",
+            "completed_at": "2026-07-31T19:59:18Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257444372"
+          },
+          {
+            "name": "build / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:05Z",
+            "completed_at": "2026-07-31T19:59:05Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257444740"
+          },
+          {
+            "name": "asan-build / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:46Z",
+            "completed_at": "2026-07-31T19:58:45Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257380148"
+          },
+          {
+            "name": "asan-build / \ud83d\udee0\ufe0f Build ASan ubuntu 24.04",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:01:32Z",
+            "completed_at": "2026-07-31T20:29:26Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257489290"
+          },
+          {
+            "name": "asan-build / \ud83d\udc0d Build wheel (Python 3.12)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:18Z",
+            "completed_at": "2026-07-31T19:59:17Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257489884"
+          },
+          {
+            "name": "llk-smoke-tests",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:45Z",
+            "completed_at": "2026-07-31T19:58:45Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257379473"
+          },
+          {
+            "name": "llk-build-quasar",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:58:45Z",
+            "completed_at": "2026-07-31T19:58:45Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91257379464"
+          },
+          {
+            "name": "runtime-smoke-tests / load-test-matrix",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:29:39Z",
+            "completed_at": "2026-07-31T20:29:54Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91263546422"
+          },
+          {
+            "name": "runtime-smoke-tests / runtime validation smoke [wh_n150_civ2]",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:31:46Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91263641910"
+          },
+          {
+            "name": "build / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:05Z",
+            "completed_at": "2026-07-31T19:59:05Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257445086"
+          },
+          {
+            "name": "ttnn-smoke-tests / load-test-matrix",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:29:39Z",
+            "completed_at": "2026-07-31T20:29:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91263546530"
+          },
+          {
+            "name": "ttnn-smoke-tests / ttnn validation smoke [wh_n150_civ2]",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:31:42Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91263636036"
+          },
+          {
+            "name": "build / \ud83d\udee0\ufe0f Build Release ubuntu 22.04",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:01:46Z",
+            "completed_at": "2026-07-31T20:18:57Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257491471"
+          },
+          {
+            "name": "build-docs / build-docs",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:29:29Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91263546514"
+          },
+          {
+            "name": "build / \ud83d\udc0d Build wheel (Python 3.10)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:18Z",
+            "completed_at": "2026-07-31T19:59:18Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257491801"
+          },
+          {
+            "name": "build-tsan / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:59:16Z",
+            "completed_at": "2026-07-31T19:59:27Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257444274"
+          },
+          {
+            "name": "build-tsan / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:05Z",
+            "completed_at": "2026-07-31T19:59:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257445074"
+          },
+          {
+            "name": "runtime-examples / load-test-matrix",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:29:39Z",
+            "completed_at": "2026-07-31T20:29:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91263546536"
+          },
+          {
+            "name": "runtime-examples / runtime sdk examples [wh_n150_civ2]",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:31:41Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91263635449"
+          },
+          {
+            "name": "ttnn-examples / load-test-matrix",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:29:30Z",
+            "completed_at": "2026-07-31T20:29:40Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91263546588"
+          },
+          {
+            "name": "ttnn-examples / ttnn sdk examples [wh_n150_civ2]",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:31:13Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002359/job/91263591994"
+          },
+          {
+            "name": "build-tsan / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:05Z",
+            "completed_at": "2026-07-31T19:59:05Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257444998"
+          },
+          {
+            "name": "build-tsan / \ud83d\udee0\ufe0f Build TSan ubuntu 24.04",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:01:57Z",
+            "completed_at": "2026-07-31T20:21:26Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257521892"
+          },
+          {
+            "name": "build-tsan / \ud83d\udc0d Build wheel (Python 3.12)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:27Z",
+            "completed_at": "2026-07-31T19:59:27Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257522524"
+          },
+          {
+            "name": "build-asan / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T19:59:10Z",
+            "completed_at": "2026-07-31T19:59:17Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257444346"
+          },
+          {
+            "name": "build-asan / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:05Z",
+            "completed_at": "2026-07-31T19:59:05Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257444866"
+          },
+          {
+            "name": "build-asan / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T19:59:05Z",
+            "completed_at": "2026-07-31T19:59:05Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257445392"
+          },
+          {
+            "name": "build-asan / \ud83d\udee0\ufe0f Build ASan ubuntu 24.04",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:00:19Z",
+            "completed_at": "2026-07-31T20:30:56Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661002219/job/91257488547"
+          }
+        ]
+      }
+    },
+    {
+      "position": 3,
+      "state": "AWAITING_CHECKS",
+      "pr_number": 51403,
+      "pr_title": "[Test Only] Updating Quasar regression tests to include FD; Enabling more tests to run FD",
+      "pr_url": "https://github.com/tenstorrent/tt-metal/pull/51403",
+      "author": "kstevensTT",
+      "enqueued_at": "2026-07-31T20:02:42Z",
+      "estimated_time_to_merge_seconds": 2823,
+      "time_in_queue": "30 minutes",
+      "commit": {
+        "sha": "6673a45deab927d9229e2588f8ec9e730dc2760d",
+        "url": "https://github.com/tenstorrent/tt-metal/commit/6673a45deab927d9229e2588f8ec9e730dc2760d"
+      },
+      "ci_status": {
+        "overall_state": "PENDING",
+        "ci_started_at": "2026-07-31T20:03:03Z",
+        "total_checks": 100,
+        "running": 5,
+        "completed": 95,
+        "queued": 0,
+        "checks": [
+          {
+            "name": "static-checks / find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:07Z",
+            "completed_at": "2026-07-31T20:04:49Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258276855"
+          },
+          {
+            "name": "check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:06Z",
+            "completed_at": "2026-07-31T20:03:10Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258275305"
+          },
+          {
+            "name": "find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:11Z",
+            "completed_at": "2026-07-31T20:05:30Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661412868/job/91258271540"
+          },
+          {
+            "name": "static-checks / Run Pre-commit Hooks",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:07Z",
+            "completed_at": "2026-07-31T20:04:46Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258276816"
+          },
+          {
+            "name": "find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:15Z",
+            "completed_at": "2026-07-31T20:04:12Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258275141"
+          },
+          {
+            "name": "Run Pre-commit Hooks",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:13Z",
+            "completed_at": "2026-07-31T20:05:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661412868/job/91258271458"
+          },
+          {
+            "name": "copilot-pr-labeler",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:03:03Z",
+            "completed_at": "2026-07-31T20:03:02Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258275749"
+          },
+          {
+            "name": "static-checks / check-spdx-licenses",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:07Z",
+            "completed_at": "2026-07-31T20:04:09Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258276785"
+          },
+          {
+            "name": "check-spdx-licenses",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:07Z",
+            "completed_at": "2026-07-31T20:04:19Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661412868/job/91258271567"
+          },
+          {
+            "name": "static-checks / check-metal-kernel-count",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:06Z",
+            "completed_at": "2026-07-31T20:03:41Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258276854"
+          },
+          {
+            "name": "build-docker-images / Artifact metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:14Z",
+            "completed_at": "2026-07-31T20:03:38Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258303205"
+          },
+          {
+            "name": "check-metal-kernel-count",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:13Z",
+            "completed_at": "2026-07-31T20:03:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661412868/job/91258271510"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udd27 Build tool images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:03:39Z",
+            "completed_at": "2026-07-31T20:03:38Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258402769"
+          },
+          {
+            "name": "static-checks / check-doc",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:06Z",
+            "completed_at": "2026-07-31T20:03:29Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258276846"
+          },
+          {
+            "name": "check-doc",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:07Z",
+            "completed_at": "2026-07-31T20:03:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661412868/job/91258271483"
+          },
+          {
+            "name": "static-checks / check-forbidden-imports",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:12Z",
+            "completed_at": "2026-07-31T20:03:22Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258276841"
+          },
+          {
+            "name": "check-forbidden-imports",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:08Z",
+            "completed_at": "2026-07-31T20:03:23Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661412868/job/91258271497"
+          },
+          {
+            "name": "static-checks / check-interleaved-addr-gen-usage",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:06Z",
+            "completed_at": "2026-07-31T20:04:39Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258276832"
+          },
+          {
+            "name": "check-interleaved-addr-gen-usage",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:07Z",
+            "completed_at": "2026-07-31T20:05:10Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661412868/job/91258271498"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc0d Python venvs",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:03:39Z",
+            "completed_at": "2026-07-31T20:03:38Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258402385"
+          },
+          {
+            "name": "static-checks / check-sweeps-workflow",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:07Z",
+            "completed_at": "2026-07-31T20:03:28Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258276829"
+          },
+          {
+            "name": "check-sweeps-workflow",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:07Z",
+            "completed_at": "2026-07-31T20:03:24Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661412868/job/91258271529"
+          },
+          {
+            "name": "static-checks / check-docker-bake-ci",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:08Z",
+            "completed_at": "2026-07-31T20:03:25Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258276838"
+          },
+          {
+            "name": "check-docker-bake-ci",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:13Z",
+            "completed_at": "2026-07-31T20:03:28Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661412868/job/91258271515"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33\ufe0f Build LLK Docker images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:03:39Z",
+            "completed_at": "2026-07-31T20:03:38Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258402798"
+          },
+          {
+            "name": "static-checks / codeowners-validator",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:07Z",
+            "completed_at": "2026-07-31T20:03:23Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258276731"
+          },
+          {
+            "name": "codeowners-validator",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:14Z",
+            "completed_at": "2026-07-31T20:03:31Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661412868/job/91258271514"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33 ManyLinux image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:03:39Z",
+            "completed_at": "2026-07-31T20:03:39Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258403081"
+          },
+          {
+            "name": "static-checks / check-symlinks-valid",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:08Z",
+            "completed_at": "2026-07-31T20:03:35Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258276856"
+          },
+          {
+            "name": "check-symlinks-valid",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:15Z",
+            "completed_at": "2026-07-31T20:03:29Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661412868/job/91258271551"
+          },
+          {
+            "name": "static-checks / check-docs-links",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:04:49Z",
+            "completed_at": "2026-07-31T20:04:49Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258640478"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33 Ubuntu images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:03:39Z",
+            "completed_at": "2026-07-31T20:03:39Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258402738"
+          },
+          {
+            "name": "check-docs-links",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:31Z",
+            "completed_at": "2026-07-31T20:05:30Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661412868/job/91258781898"
+          },
+          {
+            "name": "build-docker-images / \ud83c\udff7\ufe0f Update latest tags",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:03:39Z",
+            "completed_at": "2026-07-31T20:03:39Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258403748"
+          },
+          {
+            "name": "docker-images / check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:37Z",
+            "completed_at": "2026-07-31T20:03:42Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258276756"
+          },
+          {
+            "name": "model-charts-sync",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:04:13Z",
+            "completed_at": "2026-07-31T20:04:13Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258517564"
+          },
+          {
+            "name": "docker-images / Calculate Tags",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:46Z",
+            "completed_at": "2026-07-31T20:04:22Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258413593"
+          },
+          {
+            "name": "docker-images / Build LLK CI image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:04:22Z",
+            "completed_at": "2026-07-31T20:04:22Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258549303"
+          },
+          {
+            "name": "llk-label-pr",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:04:13Z",
+            "completed_at": "2026-07-31T20:04:13Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258517379"
+          },
+          {
+            "name": "docker-images / Build tool images / Tool metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:04:36Z",
+            "completed_at": "2026-07-31T20:04:39Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258548529"
+          },
+          {
+            "name": "resolve-docker-pull-refs / Resolve Docker pull refs",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:43Z",
+            "completed_at": "2026-07-31T20:03:46Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258403171"
+          },
+          {
+            "name": "docker-images / Build tool images / Prepare tool build matrix",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:04:22Z",
+            "completed_at": "2026-07-31T20:04:22Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258549366"
+          },
+          {
+            "name": "code-analysis / determine-scan-type",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:04:17Z",
+            "completed_at": "2026-07-31T20:05:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258516745"
+          },
+          {
+            "name": "docker-images / Build tool images / \ud83d\udd27 Build ${{ matrix.tool }}",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:04:22Z",
+            "completed_at": "2026-07-31T20:04:22Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258549562"
+          },
+          {
+            "name": "code-analysis / check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:04:16Z",
+            "completed_at": "2026-07-31T20:04:20Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258516881"
+          },
+          {
+            "name": "code-analysis / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:04:20Z",
+            "completed_at": "2026-07-31T20:04:20Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258542227"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / Artifact metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:04:46Z",
+            "completed_at": "2026-07-31T20:05:13Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258608879"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udd27 Build tool images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:14Z",
+            "completed_at": "2026-07-31T20:05:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258723898"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc0d Python venvs",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:14Z",
+            "completed_at": "2026-07-31T20:05:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258724400"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc33\ufe0f Build LLK Docker images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:14Z",
+            "completed_at": "2026-07-31T20:05:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258723942"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc33 ManyLinux image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:14Z",
+            "completed_at": "2026-07-31T20:05:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258724301"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc33 Ubuntu images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:14Z",
+            "completed_at": "2026-07-31T20:05:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258724473"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83c\udff7\ufe0f Update latest tags",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:14Z",
+            "completed_at": "2026-07-31T20:05:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258725117"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / Artifact metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:04:44Z",
+            "completed_at": "2026-07-31T20:05:02Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258608958"
+          },
+          {
+            "name": "code-analysis / resolve-docker-pull-refs / Resolve Docker pull refs",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:04:24Z",
+            "completed_at": "2026-07-31T20:04:29Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258541644"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (Full) / \ud83e\udd16 Clang Tidy",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:21:36Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258853115"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udd27 Build tool images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:03Z",
+            "completed_at": "2026-07-31T20:05:03Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258686440"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (Metalium)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:53Z",
+            "completed_at": "2026-07-31T20:05:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258854213"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (TTNN)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:53Z",
+            "completed_at": "2026-07-31T20:05:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258854109"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc0d Python venvs",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:03Z",
+            "completed_at": "2026-07-31T20:05:03Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258686187"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (tt-train)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:53Z",
+            "completed_at": "2026-07-31T20:05:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258853528"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (catchall)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:53Z",
+            "completed_at": "2026-07-31T20:05:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258853937"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc33\ufe0f Build LLK Docker images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:03Z",
+            "completed_at": "2026-07-31T20:05:03Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258686595"
+          },
+          {
+            "name": "asan-build / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:04:24Z",
+            "completed_at": "2026-07-31T20:04:33Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258516792"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc33 ManyLinux image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:03Z",
+            "completed_at": "2026-07-31T20:05:03Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258686574"
+          },
+          {
+            "name": "asan-build / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:04:13Z",
+            "completed_at": "2026-07-31T20:04:13Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258517427"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc33 Ubuntu images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:03Z",
+            "completed_at": "2026-07-31T20:05:03Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258686613"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83c\udff7\ufe0f Update latest tags",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:03Z",
+            "completed_at": "2026-07-31T20:05:03Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258686807"
+          },
+          {
+            "name": "docker-images / Prewarm cache from GHCR via HARBOR",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:14Z",
+            "completed_at": "2026-07-31T20:05:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258725129"
+          },
+          {
+            "name": "check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:38Z",
+            "completed_at": "2026-07-31T20:03:42Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258276815"
+          },
+          {
+            "name": "find-changes",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:03:15Z",
+            "completed_at": "2026-07-31T20:04:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258276646"
+          },
+          {
+            "name": "resolve-docker-pull-refs-llk / Resolve Docker pull refs",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:05:18Z",
+            "completed_at": "2026-07-31T20:05:21Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258725134"
+          },
+          {
+            "name": "build / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:05:26Z",
+            "completed_at": "2026-07-31T20:05:35Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258725301"
+          },
+          {
+            "name": "build / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:15Z",
+            "completed_at": "2026-07-31T20:05:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258726120"
+          },
+          {
+            "name": "asan-build / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:04:13Z",
+            "completed_at": "2026-07-31T20:04:13Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258517331"
+          },
+          {
+            "name": "asan-build / \ud83d\udee0\ufe0f Build ASan ubuntu 24.04",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:06:51Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258587413"
+          },
+          {
+            "name": "asan-build / \ud83d\udc0d Build wheel (Python 3.12)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:04:34Z",
+            "completed_at": "2026-07-31T20:04:33Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258587982"
+          },
+          {
+            "name": "llk-smoke-tests",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:04:13Z",
+            "completed_at": "2026-07-31T20:04:13Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258517273"
+          },
+          {
+            "name": "llk-build-quasar",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:04:13Z",
+            "completed_at": "2026-07-31T20:04:13Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413596/job/91258517375"
+          },
+          {
+            "name": "build / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:15Z",
+            "completed_at": "2026-07-31T20:05:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258725951"
+          },
+          {
+            "name": "build / \ud83d\udee0\ufe0f Build Release ubuntu 22.04",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:07:22Z",
+            "completed_at": "2026-07-31T20:24:10Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258798330"
+          },
+          {
+            "name": "build / \ud83d\udc0d Build wheel (Python 3.10)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:36Z",
+            "completed_at": "2026-07-31T20:05:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258799088"
+          },
+          {
+            "name": "build-tsan / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:05:39Z",
+            "completed_at": "2026-07-31T20:06:19Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258725156"
+          },
+          {
+            "name": "build-tsan / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:15Z",
+            "completed_at": "2026-07-31T20:05:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258725927"
+          },
+          {
+            "name": "build-tsan / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:14Z",
+            "completed_at": "2026-07-31T20:05:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258725660"
+          },
+          {
+            "name": "build-tsan / \ud83d\udee0\ufe0f Build TSan ubuntu 24.04",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:28:07Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258947048"
+          },
+          {
+            "name": "build-tsan / \ud83d\udc0d Build wheel (Python 3.12)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:06:20Z",
+            "completed_at": "2026-07-31T20:06:20Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258947467"
+          },
+          {
+            "name": "build-asan / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:05:19Z",
+            "completed_at": "2026-07-31T20:05:30Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258725147"
+          },
+          {
+            "name": "build-asan / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:15Z",
+            "completed_at": "2026-07-31T20:05:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258725920"
+          },
+          {
+            "name": "build-asan / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:14Z",
+            "completed_at": "2026-07-31T20:05:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258725656"
+          },
+          {
+            "name": "build-asan / \ud83d\udee0\ufe0f Build ASan ubuntu 24.04",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:07:03Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258780988"
+          },
+          {
+            "name": "build-asan / \ud83d\udc0d Build wheel (Python 3.12)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:31Z",
+            "completed_at": "2026-07-31T20:05:30Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258782161"
+          },
+          {
+            "name": "build-sweeps / check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:05:16Z",
+            "completed_at": "2026-07-31T20:05:23Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258725384"
+          },
+          {
+            "name": "build-sweeps / build-dispatch",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:24Z",
+            "completed_at": "2026-07-31T20:05:24Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258758023"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:05:39Z",
+            "completed_at": "2026-07-31T20:06:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258757922"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:24Z",
+            "completed_at": "2026-07-31T20:05:24Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258758836"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:05:24Z",
+            "completed_at": "2026-07-31T20:05:24Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258758493"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / \ud83d\udee0\ufe0f Build Debug ubuntu 22.04",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:26:10Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258883052"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / \ud83d\udc0d Build wheel (Python 3.10)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:06:01Z",
+            "completed_at": "2026-07-31T20:06:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258883283"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libcpp-toolchain.cmake, Release) / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:05:28Z",
+            "completed_at": "2026-07-31T20:05:34Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661413755/job/91258757901"
+          }
+        ]
+      }
+    },
+    {
+      "position": 4,
+      "state": "AWAITING_CHECKS",
+      "pr_number": 51774,
+      "pr_title": "Fix TT-DiT persistent reduce-scatter buffer shape",
+      "pr_url": "https://github.com/tenstorrent/tt-metal/pull/51774",
+      "author": "sadesoyeTT",
+      "enqueued_at": "2026-07-31T20:10:07Z",
+      "estimated_time_to_merge_seconds": 3415,
+      "time_in_queue": "22 minutes",
+      "commit": {
+        "sha": "bfdc47f90085d0866354134a5ef42a64ee957f54",
+        "url": "https://github.com/tenstorrent/tt-metal/commit/bfdc47f90085d0866354134a5ef42a64ee957f54"
+      },
+      "ci_status": {
+        "overall_state": "PENDING",
+        "ci_started_at": "2026-07-31T20:10:29Z",
+        "total_checks": 100,
+        "running": 2,
+        "completed": 94,
+        "queued": 4,
+        "checks": [
+          {
+            "name": "static-checks / find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:40Z",
+            "completed_at": "2026-07-31T20:13:35Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91259780017"
+          },
+          {
+            "name": "check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:31Z",
+            "completed_at": "2026-07-31T20:10:35Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91259777369"
+          },
+          {
+            "name": "find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:34Z",
+            "completed_at": "2026-07-31T20:12:19Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661871398/job/91259772658"
+          },
+          {
+            "name": "static-checks / Run Pre-commit Hooks",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:34Z",
+            "completed_at": "2026-07-31T20:12:26Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91259779983"
+          },
+          {
+            "name": "find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:43Z",
+            "completed_at": "2026-07-31T20:11:58Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91259777276"
+          },
+          {
+            "name": "Run Pre-commit Hooks",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:31Z",
+            "completed_at": "2026-07-31T20:12:13Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661871398/job/91259772638"
+          },
+          {
+            "name": "copilot-pr-labeler",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:10:29Z",
+            "completed_at": "2026-07-31T20:10:29Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91259778116"
+          },
+          {
+            "name": "static-checks / check-spdx-licenses",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:41Z",
+            "completed_at": "2026-07-31T20:11:58Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91259779972"
+          },
+          {
+            "name": "check-spdx-licenses",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:38Z",
+            "completed_at": "2026-07-31T20:11:44Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661871398/job/91259772641"
+          },
+          {
+            "name": "static-checks / check-metal-kernel-count",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:35Z",
+            "completed_at": "2026-07-31T20:11:03Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91259779915"
+          },
+          {
+            "name": "build-docker-images / Artifact metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:38Z",
+            "completed_at": "2026-07-31T20:11:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91259798730"
+          },
+          {
+            "name": "check-metal-kernel-count",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:32Z",
+            "completed_at": "2026-07-31T20:10:49Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661871398/job/91259772627"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udd27 Build tool images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:11:04Z",
+            "completed_at": "2026-07-31T20:11:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91259896965"
+          },
+          {
+            "name": "static-checks / check-doc",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:41Z",
+            "completed_at": "2026-07-31T20:11:06Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91259779908"
+          },
+          {
+            "name": "check-doc",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:39Z",
+            "completed_at": "2026-07-31T20:11:05Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661871398/job/91259772646"
+          },
+          {
+            "name": "static-checks / check-forbidden-imports",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:36Z",
+            "completed_at": "2026-07-31T20:10:53Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91259780024"
+          },
+          {
+            "name": "check-forbidden-imports",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:33Z",
+            "completed_at": "2026-07-31T20:10:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661871398/job/91259772642"
+          },
+          {
+            "name": "static-checks / check-interleaved-addr-gen-usage",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:34Z",
+            "completed_at": "2026-07-31T20:12:06Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91259780001"
+          },
+          {
+            "name": "check-interleaved-addr-gen-usage",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:31Z",
+            "completed_at": "2026-07-31T20:12:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661871398/job/91259772624"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc0d Python venvs",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:11:04Z",
+            "completed_at": "2026-07-31T20:11:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91259896934"
+          },
+          {
+            "name": "static-checks / check-sweeps-workflow",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:35Z",
+            "completed_at": "2026-07-31T20:10:53Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91259779958"
+          },
+          {
+            "name": "check-sweeps-workflow",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:31Z",
+            "completed_at": "2026-07-31T20:11:07Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661871398/job/91259772709"
+          },
+          {
+            "name": "static-checks / check-docker-bake-ci",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:35Z",
+            "completed_at": "2026-07-31T20:10:51Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91259779895"
+          },
+          {
+            "name": "check-docker-bake-ci",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:38Z",
+            "completed_at": "2026-07-31T20:10:53Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661871398/job/91259772689"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33\ufe0f Build LLK Docker images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:11:04Z",
+            "completed_at": "2026-07-31T20:11:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91259896852"
+          },
+          {
+            "name": "static-checks / codeowners-validator",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:35Z",
+            "completed_at": "2026-07-31T20:10:54Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91259779991"
+          },
+          {
+            "name": "codeowners-validator",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:37Z",
+            "completed_at": "2026-07-31T20:10:53Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661871398/job/91259772623"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33 ManyLinux image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:11:05Z",
+            "completed_at": "2026-07-31T20:11:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91259897646"
+          },
+          {
+            "name": "static-checks / check-symlinks-valid",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:41Z",
+            "completed_at": "2026-07-31T20:10:59Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91259779959"
+          },
+          {
+            "name": "check-symlinks-valid",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:37Z",
+            "completed_at": "2026-07-31T20:10:49Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661871398/job/91259772649"
+          },
+          {
+            "name": "static-checks / check-docs-links",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:13:36Z",
+            "completed_at": "2026-07-31T20:13:35Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91260400400"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33 Ubuntu images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:11:05Z",
+            "completed_at": "2026-07-31T20:11:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91259897578"
+          },
+          {
+            "name": "check-docs-links",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:12:19Z",
+            "completed_at": "2026-07-31T20:12:19Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661871398/job/91260146659"
+          },
+          {
+            "name": "build-docker-images / \ud83c\udff7\ufe0f Update latest tags",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:11:05Z",
+            "completed_at": "2026-07-31T20:11:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91259897797"
+          },
+          {
+            "name": "docker-images / check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:29:55Z",
+            "completed_at": "2026-07-31T20:29:59Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91259779973"
+          },
+          {
+            "name": "model-charts-sync",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:11:59Z",
+            "completed_at": "2026-07-31T20:11:59Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91260080438"
+          },
+          {
+            "name": "docker-images / Calculate Tags",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:30:08Z",
+            "completed_at": "2026-07-31T20:30:43Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91263662505"
+          },
+          {
+            "name": "docker-images / Build LLK CI image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:30:43Z",
+            "completed_at": "2026-07-31T20:30:43Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91263820952"
+          },
+          {
+            "name": "llk-label-pr",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:11:59Z",
+            "completed_at": "2026-07-31T20:11:59Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91260080760"
+          },
+          {
+            "name": "docker-images / Build tool images / Tool metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:31:12Z",
+            "completed_at": "2026-07-31T20:31:19Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91263820115"
+          },
+          {
+            "name": "resolve-docker-pull-refs / Resolve Docker pull refs",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:11:15Z",
+            "completed_at": "2026-07-31T20:11:18Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91259897333"
+          },
+          {
+            "name": "docker-images / Build tool images / Prepare tool build matrix",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:30:43Z",
+            "completed_at": "2026-07-31T20:30:43Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91263820681"
+          },
+          {
+            "name": "code-analysis / determine-scan-type",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:12:06Z",
+            "completed_at": "2026-07-31T20:13:23Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91260079827"
+          },
+          {
+            "name": "docker-images / Build tool images / \ud83d\udd27 Build ${{ matrix.tool }}",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:30:43Z",
+            "completed_at": "2026-07-31T20:30:43Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91263820961"
+          },
+          {
+            "name": "code-analysis / check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:29:58Z",
+            "completed_at": "2026-07-31T20:30:02Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91260079991"
+          },
+          {
+            "name": "code-analysis / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:30:03Z",
+            "completed_at": "2026-07-31T20:30:02Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91263673121"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / Artifact metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:31:22Z",
+            "completed_at": "2026-07-31T20:31:45Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91263946267"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udd27 Build tool images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:45Z",
+            "completed_at": "2026-07-31T20:31:45Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264034541"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc0d Python venvs",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:46Z",
+            "completed_at": "2026-07-31T20:31:45Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264034774"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc33\ufe0f Build LLK Docker images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:46Z",
+            "completed_at": "2026-07-31T20:31:45Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264034809"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc33 ManyLinux image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:46Z",
+            "completed_at": "2026-07-31T20:31:45Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264035339"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83d\udc33 Ubuntu images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:46Z",
+            "completed_at": "2026-07-31T20:31:45Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264035156"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / \ud83c\udff7\ufe0f Update latest tags",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:46Z",
+            "completed_at": "2026-07-31T20:31:46Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264035744"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / Artifact metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:31:28Z",
+            "completed_at": "2026-07-31T20:31:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91263946303"
+          },
+          {
+            "name": "code-analysis / resolve-docker-pull-refs / Resolve Docker pull refs",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:30:07Z",
+            "completed_at": "2026-07-31T20:30:10Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91263672284"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (Full) / \ud83e\udd16 Clang Tidy",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:31:10Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91263701374"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udd27 Build tool images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:51Z",
+            "completed_at": "2026-07-31T20:31:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264052676"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (Metalium)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:30:11Z",
+            "completed_at": "2026-07-31T20:30:10Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91263701798"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (TTNN)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:30:11Z",
+            "completed_at": "2026-07-31T20:30:10Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91263702132"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc0d Python venvs",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:51Z",
+            "completed_at": "2026-07-31T20:31:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264052658"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (tt-train)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:30:11Z",
+            "completed_at": "2026-07-31T20:30:10Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91263701829"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (catchall)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:30:11Z",
+            "completed_at": "2026-07-31T20:30:10Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91263702248"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc33\ufe0f Build LLK Docker images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:51Z",
+            "completed_at": "2026-07-31T20:31:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264052433"
+          },
+          {
+            "name": "asan-build / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:12:13Z",
+            "completed_at": "2026-07-31T20:12:26Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91260079898"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc33 ManyLinux image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:51Z",
+            "completed_at": "2026-07-31T20:31:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264053215"
+          },
+          {
+            "name": "asan-build / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:11:59Z",
+            "completed_at": "2026-07-31T20:11:59Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91260080783"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83d\udc33 Ubuntu images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:51Z",
+            "completed_at": "2026-07-31T20:31:50Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264053042"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / \ud83c\udff7\ufe0f Update latest tags",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:51Z",
+            "completed_at": "2026-07-31T20:31:51Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264053585"
+          },
+          {
+            "name": "docker-images / Prewarm cache from GHCR via HARBOR",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:51Z",
+            "completed_at": "2026-07-31T20:31:51Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264053901"
+          },
+          {
+            "name": "check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:29:57Z",
+            "completed_at": "2026-07-31T20:30:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91259779863"
+          },
+          {
+            "name": "find-changes",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:10:43Z",
+            "completed_at": "2026-07-31T20:11:54Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91259779771"
+          },
+          {
+            "name": "resolve-docker-pull-refs-llk / Resolve Docker pull refs",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:32:07Z",
+            "completed_at": "2026-07-31T20:32:10Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264053864"
+          },
+          {
+            "name": "build / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:32:03Z",
+            "completed_at": "2026-07-31T20:32:13Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264053817"
+          },
+          {
+            "name": "build / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:51Z",
+            "completed_at": "2026-07-31T20:31:51Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264054519"
+          },
+          {
+            "name": "asan-build / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:11:59Z",
+            "completed_at": "2026-07-31T20:11:59Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91260080905"
+          },
+          {
+            "name": "asan-build / \ud83d\udee0\ufe0f Build ASan ubuntu 24.04",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:30:28Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91260168837"
+          },
+          {
+            "name": "asan-build / \ud83d\udc0d Build wheel (Python 3.12)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:12:27Z",
+            "completed_at": "2026-07-31T20:12:26Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91260169580"
+          },
+          {
+            "name": "llk-smoke-tests",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:11:59Z",
+            "completed_at": "2026-07-31T20:11:59Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91260080927"
+          },
+          {
+            "name": "llk-build-quasar",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:11:59Z",
+            "completed_at": "2026-07-31T20:11:59Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872408/job/91260080712"
+          },
+          {
+            "name": "build / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:51Z",
+            "completed_at": "2026-07-31T20:31:51Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264055183"
+          },
+          {
+            "name": "build / \ud83d\udee0\ufe0f Build Release ubuntu 22.04",
+            "status": "QUEUED",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:32:13Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264133930"
+          },
+          {
+            "name": "build / \ud83d\udc0d Build wheel (Python 3.10)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:32:13Z",
+            "completed_at": "2026-07-31T20:32:13Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264134799"
+          },
+          {
+            "name": "build-tsan / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:32:04Z",
+            "completed_at": "2026-07-31T20:32:12Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264053813"
+          },
+          {
+            "name": "build-tsan / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:51Z",
+            "completed_at": "2026-07-31T20:31:51Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264054704"
+          },
+          {
+            "name": "build-tsan / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:51Z",
+            "completed_at": "2026-07-31T20:31:51Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264054756"
+          },
+          {
+            "name": "build-tsan / \ud83d\udee0\ufe0f Build TSan ubuntu 24.04",
+            "status": "QUEUED",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:32:13Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264132788"
+          },
+          {
+            "name": "build-tsan / \ud83d\udc0d Build wheel (Python 3.12)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:32:13Z",
+            "completed_at": "2026-07-31T20:32:12Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264133078"
+          },
+          {
+            "name": "build-asan / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:32:08Z",
+            "completed_at": "2026-07-31T20:32:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264053854"
+          },
+          {
+            "name": "build-asan / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:51Z",
+            "completed_at": "2026-07-31T20:31:51Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264054667"
+          },
+          {
+            "name": "build-asan / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:51Z",
+            "completed_at": "2026-07-31T20:31:51Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264054700"
+          },
+          {
+            "name": "build-asan / \ud83d\udee0\ufe0f Build ASan ubuntu 24.04",
+            "status": "QUEUED",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:32:14Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264139340"
+          },
+          {
+            "name": "build-asan / \ud83d\udc0d Build wheel (Python 3.12)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:32:15Z",
+            "completed_at": "2026-07-31T20:32:14Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264140195"
+          },
+          {
+            "name": "build-sweeps / check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:31:54Z",
+            "completed_at": "2026-07-31T20:31:58Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264054010"
+          },
+          {
+            "name": "build-sweeps / build-dispatch",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:59Z",
+            "completed_at": "2026-07-31T20:31:58Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264083578"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:32:20Z",
+            "completed_at": "2026-07-31T20:32:44Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264080820"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:59Z",
+            "completed_at": "2026-07-31T20:31:59Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264082498"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:59Z",
+            "completed_at": "2026-07-31T20:31:59Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264081750"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / \ud83d\udee0\ufe0f Build Debug ubuntu 22.04",
+            "status": "QUEUED",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:32:44Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264244628"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libstdcpp-toolchain.cmake, Debug) / \ud83d\udc0d Build wheel (Python 3.10)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:32:45Z",
+            "completed_at": "2026-07-31T20:32:44Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264245006"
+          },
+          {
+            "name": "build-sweeps / build (Ubuntu 22.04, cmake/x86_64-linux-clang-20-libcpp-toolchain.cmake, Release) / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:32:03Z",
+            "completed_at": "2026-07-31T20:32:11Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30661872595/job/91264080775"
+          }
+        ]
+      }
+    },
+    {
+      "position": 5,
+      "state": "AWAITING_CHECKS",
+      "pr_number": 51746,
+      "pr_title": "#51744: Fix Quasar data-movement builds using common memmove helpers",
+      "pr_url": "https://github.com/tenstorrent/tt-metal/pull/51746",
+      "author": "bbradelTT",
+      "enqueued_at": "2026-07-31T20:21:38Z",
+      "estimated_time_to_merge_seconds": 4007,
+      "time_in_queue": "11 minutes",
+      "commit": {
+        "sha": "699efc99a749f3fc406d57077bb8352e126b48c0",
+        "url": "https://github.com/tenstorrent/tt-metal/commit/699efc99a749f3fc406d57077bb8352e126b48c0"
+      },
+      "ci_status": {
+        "overall_state": "PENDING",
+        "ci_started_at": "2026-07-31T20:21:45Z",
+        "total_checks": 67,
+        "running": 3,
+        "completed": 63,
+        "queued": 1,
+        "checks": [
+          {
+            "name": "static-checks / find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:49Z",
+            "completed_at": "2026-07-31T20:23:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262028132"
+          },
+          {
+            "name": "check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:29:59Z",
+            "completed_at": "2026-07-31T20:30:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91262025767"
+          },
+          {
+            "name": "find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:49Z",
+            "completed_at": "2026-07-31T20:23:28Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580332/job/91262022765"
+          },
+          {
+            "name": "static-checks / Run Pre-commit Hooks",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:53Z",
+            "completed_at": "2026-07-31T20:23:24Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262028029"
+          },
+          {
+            "name": "find-changed-files",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:50Z",
+            "completed_at": "2026-07-31T20:22:54Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91262025714"
+          },
+          {
+            "name": "Run Pre-commit Hooks",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:50Z",
+            "completed_at": "2026-07-31T20:23:43Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580332/job/91262022879"
+          },
+          {
+            "name": "copilot-pr-labeler",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:21:45Z",
+            "completed_at": "2026-07-31T20:21:44Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91262026393"
+          },
+          {
+            "name": "static-checks / check-spdx-licenses",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:50Z",
+            "completed_at": "2026-07-31T20:22:59Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262028030"
+          },
+          {
+            "name": "check-spdx-licenses",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:55Z",
+            "completed_at": "2026-07-31T20:23:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580332/job/91262022785"
+          },
+          {
+            "name": "static-checks / check-metal-kernel-count",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:50Z",
+            "completed_at": "2026-07-31T20:22:09Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262027990"
+          },
+          {
+            "name": "build-docker-images / Artifact metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:30:15Z",
+            "completed_at": "2026-07-31T20:30:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263678170"
+          },
+          {
+            "name": "check-metal-kernel-count",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:49Z",
+            "completed_at": "2026-07-31T20:22:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580332/job/91262022808"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udd27 Build tool images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:30:52Z",
+            "completed_at": "2026-07-31T20:30:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263851702"
+          },
+          {
+            "name": "static-checks / check-doc",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:51Z",
+            "completed_at": "2026-07-31T20:22:15Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262028053"
+          },
+          {
+            "name": "check-doc",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:49Z",
+            "completed_at": "2026-07-31T20:22:15Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580332/job/91262022735"
+          },
+          {
+            "name": "static-checks / check-forbidden-imports",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:49Z",
+            "completed_at": "2026-07-31T20:22:05Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262028075"
+          },
+          {
+            "name": "check-forbidden-imports",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:49Z",
+            "completed_at": "2026-07-31T20:22:11Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580332/job/91262022883"
+          },
+          {
+            "name": "static-checks / check-interleaved-addr-gen-usage",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:49Z",
+            "completed_at": "2026-07-31T20:23:20Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262028010"
+          },
+          {
+            "name": "check-interleaved-addr-gen-usage",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:53Z",
+            "completed_at": "2026-07-31T20:23:20Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580332/job/91262022788"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc0d Python venvs",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:30:52Z",
+            "completed_at": "2026-07-31T20:30:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263851485"
+          },
+          {
+            "name": "static-checks / check-sweeps-workflow",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:49Z",
+            "completed_at": "2026-07-31T20:22:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262028063"
+          },
+          {
+            "name": "check-sweeps-workflow",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:55Z",
+            "completed_at": "2026-07-31T20:22:09Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580332/job/91262022824"
+          },
+          {
+            "name": "static-checks / check-docker-bake-ci",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:56Z",
+            "completed_at": "2026-07-31T20:22:10Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262028001"
+          },
+          {
+            "name": "check-docker-bake-ci",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:50Z",
+            "completed_at": "2026-07-31T20:22:05Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580332/job/91262022891"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33\ufe0f Build LLK Docker images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:30:52Z",
+            "completed_at": "2026-07-31T20:30:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263851578"
+          },
+          {
+            "name": "static-checks / codeowners-validator",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:50Z",
+            "completed_at": "2026-07-31T20:22:04Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262028065"
+          },
+          {
+            "name": "codeowners-validator",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:50Z",
+            "completed_at": "2026-07-31T20:22:17Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580332/job/91262022816"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33 ManyLinux image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:30:52Z",
+            "completed_at": "2026-07-31T20:30:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263851817"
+          },
+          {
+            "name": "static-checks / check-symlinks-valid",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:57Z",
+            "completed_at": "2026-07-31T20:22:10Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262027956"
+          },
+          {
+            "name": "check-symlinks-valid",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:53Z",
+            "completed_at": "2026-07-31T20:22:08Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580332/job/91262022927"
+          },
+          {
+            "name": "static-checks / check-docs-links",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:23:37Z",
+            "completed_at": "2026-07-31T20:23:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262385610"
+          },
+          {
+            "name": "build-docker-images / \ud83d\udc33 Ubuntu images",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:30:52Z",
+            "completed_at": "2026-07-31T20:30:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263852191"
+          },
+          {
+            "name": "check-docs-links",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:23:29Z",
+            "completed_at": "2026-07-31T20:23:29Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580332/job/91262359695"
+          },
+          {
+            "name": "build-docker-images / \ud83c\udff7\ufe0f Update latest tags",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:30:52Z",
+            "completed_at": "2026-07-31T20:30:52Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263851756"
+          },
+          {
+            "name": "docker-images / check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:30:08Z",
+            "completed_at": "2026-07-31T20:30:12Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262028147"
+          },
+          {
+            "name": "model-charts-sync",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:22:55Z",
+            "completed_at": "2026-07-31T20:22:55Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91262251309"
+          },
+          {
+            "name": "docker-images / Calculate Tags",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:31:30Z",
+            "completed_at": "2026-07-31T20:32:15Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91263707513"
+          },
+          {
+            "name": "docker-images / Build LLK CI image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:32:15Z",
+            "completed_at": "2026-07-31T20:32:15Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91264141962"
+          },
+          {
+            "name": "llk-label-pr",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:22:55Z",
+            "completed_at": "2026-07-31T20:22:55Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91262251318"
+          },
+          {
+            "name": "docker-images / Build tool images / Tool metadata",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:32:29Z",
+            "completed_at": "2026-07-31T20:32:33Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91264141703"
+          },
+          {
+            "name": "resolve-docker-pull-refs / Resolve Docker pull refs",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:31:21Z",
+            "completed_at": "2026-07-31T20:31:27Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263851671"
+          },
+          {
+            "name": "docker-images / Build tool images / Prepare tool build matrix",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:32:15Z",
+            "completed_at": "2026-07-31T20:32:15Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91264142693"
+          },
+          {
+            "name": "code-analysis / determine-scan-type",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:30:57Z",
+            "completed_at": "2026-07-31T20:32:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263851696"
+          },
+          {
+            "name": "docker-images / Build tool images / \ud83d\udd27 Build ${{ matrix.tool }}",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:32:15Z",
+            "completed_at": "2026-07-31T20:32:15Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91264142890"
+          },
+          {
+            "name": "code-analysis / check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:30:56Z",
+            "completed_at": "2026-07-31T20:31:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263851797"
+          },
+          {
+            "name": "docker-images / Ubuntu 22.04 / Artifact metadata",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:32:45Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91264206344"
+          },
+          {
+            "name": "code-analysis / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:01Z",
+            "completed_at": "2026-07-31T20:31:01Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263883529"
+          },
+          {
+            "name": "docker-images / Ubuntu 24.04 / Artifact metadata",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:32:38Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91264206328"
+          },
+          {
+            "name": "code-analysis / resolve-docker-pull-refs / Resolve Docker pull refs",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:31:14Z",
+            "completed_at": "2026-07-31T20:31:17Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263882801"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (Full) / \ud83e\udd16 Clang Tidy",
+            "status": "QUEUED",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:32:36Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91264215141"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (Metalium)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:32:36Z",
+            "completed_at": "2026-07-31T20:32:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91264215532"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (TTNN)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:32:36Z",
+            "completed_at": "2026-07-31T20:32:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91264216134"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (tt-train)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:32:36Z",
+            "completed_at": "2026-07-31T20:32:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91264215984"
+          },
+          {
+            "name": "code-analysis / \ud83e\udd16 Clang Tidy (catchall)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:32:36Z",
+            "completed_at": "2026-07-31T20:32:36Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91264215804"
+          },
+          {
+            "name": "asan-build / parse-platform",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:31:48Z",
+            "completed_at": "2026-07-31T20:31:55Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263971721"
+          },
+          {
+            "name": "asan-build / build-docker-image",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:27Z",
+            "completed_at": "2026-07-31T20:31:27Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263972450"
+          },
+          {
+            "name": "check-harbor / Check Harbor",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:30:01Z",
+            "completed_at": "2026-07-31T20:30:06Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262027935"
+          },
+          {
+            "name": "find-changes",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:58Z",
+            "completed_at": "2026-07-31T20:23:16Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662581086/job/91262027838"
+          },
+          {
+            "name": "asan-build / download-artifacts",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:27Z",
+            "completed_at": "2026-07-31T20:31:27Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263972443"
+          },
+          {
+            "name": "asan-build / \ud83d\udee0\ufe0f Build ASan ubuntu 24.04",
+            "status": "IN_PROGRESS",
+            "conclusion": null,
+            "started_at": "2026-07-31T20:31:58Z",
+            "completed_at": null,
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91264069802"
+          },
+          {
+            "name": "asan-build / \ud83d\udc0d Build wheel (Python 3.12)",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:56Z",
+            "completed_at": "2026-07-31T20:31:55Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91264070199"
+          },
+          {
+            "name": "llk-smoke-tests",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:27Z",
+            "completed_at": "2026-07-31T20:31:27Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263972449"
+          },
+          {
+            "name": "llk-build-quasar",
+            "status": "COMPLETED",
+            "conclusion": "SKIPPED",
+            "started_at": "2026-07-31T20:31:28Z",
+            "completed_at": "2026-07-31T20:31:27Z",
+            "details_url": "https://github.com/tenstorrent/tt-metal/actions/runs/30662580925/job/91263972706"
+          },
+          {
+            "name": "Cycode: Licenses Compliance",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:51Z",
+            "completed_at": "2026-07-31T20:21:51Z",
+            "details_url": "https://cycode.com"
+          },
+          {
+            "name": "Cycode: SAST",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:51Z",
+            "completed_at": "2026-07-31T20:21:51Z",
+            "details_url": "https://cycode.com"
+          },
+          {
+            "name": "Cycode: Secrets",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:51Z",
+            "completed_at": "2026-07-31T20:21:51Z",
+            "details_url": "https://cycode.com"
+          },
+          {
+            "name": "Cycode: Vulnerable Dependencies",
+            "status": "COMPLETED",
+            "conclusion": "SUCCESS",
+            "started_at": "2026-07-31T20:21:50Z",
+            "completed_at": "2026-07-31T20:21:50Z",
+            "details_url": "https://cycode.com"
+          }
+        ]
+      }
+    }
+  ]
+}
